@@ -10,3 +10,6 @@ languages:
 framework:
 - django 5.0.2
 - bootstrap
+
+user: jape
+passwd: admin@jape
