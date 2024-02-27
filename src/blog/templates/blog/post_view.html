@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ post.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+
+<section class="container border border-danger">
+    <div class="col-12 border mt-3 mb-3 p-4 p-md-5 mb-4 rounded bg-dark"
+         style="background-image: url('{{ post.image.url }}'); height: 350px; filter: brightness(100%); background-size: cover;">
+        <div class="col-md-6 w-100 text-white" style="margin-top: 0%;">
+            <h1 class="display-4 fst-italic text-center text-white"> {{ post.title }}</h1>
+            <p class="lead my-3 text-center">
+                {{ post.author_or_default }} {{ post.created_on }}
+            </p>
+        </div>
+    </div>
+    <div class="row container m-0">
+        <div class="col-lg-9">
+            <article>
+                <div>
+                    <p class="lead">{{ post.content|safe }}</p>
+                </div>
+            </article>
+        </div>
+        <hr
+        class="my-3">
+        <div class="col-lg-3">
+            <h1>Categories</h1>
+        </div>
+    </div>
+</section>
+{% endblock %}
