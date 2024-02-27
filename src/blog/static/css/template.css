@@ -1,5 +1,7 @@
-body {
+@import "reset.css";
 
+body {
+    background-color: mintcream;
 }
 
 .text-menu-color {
