@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -19,7 +18,8 @@ def home_view(request):
     post_1 = posts[1]
     post_2 = posts[2]
     post_3 = posts[3]
-    return render(request, "blog/posts_list.html", context={"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3})
+    context = {"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3, "posts": posts}
+    return render(request, "blog/posts_list.html", context)
 
 
 def image_view(request):
