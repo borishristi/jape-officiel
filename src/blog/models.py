@@ -32,7 +32,7 @@ class BlogPost(models.Model):
 
     @property
     def author_or_default(self):
-        return self.author.username if self.author else "auteur inconnu"
+        return self.author.last_name if self.author else "auteur inconnu"
 
     # def get_absolute_url(self):
     #     return reverse('posts:home')

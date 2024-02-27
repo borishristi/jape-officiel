@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
+<!--<h1>posts list</h1>-->
+<!--<img src="{{ posts.image.url }}" alt="">-->
+<!--<h1>{{ posts.title }}</h1>-->
+<!--<h2>{{ posts.author }}</h2>-->
+<!--<h4>{{ posts.content|truncatewords:50 }}</h4>-->
+
+<!--START featured post-->
 
 <section class="mt-5 mb-5">
     <div class="container">
@@ -9,23 +15,20 @@
             <div class="col-lg-6">
                 <div class="img-justify position-relative">
                     <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                         src="{% static 'img/img_10.jpg' %}" alt="">
+                         src="{{ post.image.url }}" alt="">
                     <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                         <span style="font-size: medium; margin-top: -35px"
                               class="position-absolute bg-danger ps-2 pe-2 rounded-3 text-white"><i
                                 class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>Livestyle</span>
-                        <a href="#" class="h2 title-link text-white title-link-white">The title of my first
-                            featured article.</a>
-                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad architecto
-                            culpa deserunt
-                            dolores ducimus fuga.</p>
+                        <a href="#" class="h2 title-link text-white title-link-white">{{ post.title }}.</a>
+                        <p class="text-white">{{ post.content|truncatewords:20 }}.</p>
                         <div class="position-relative montserrat-card-text">
                             <img width="47px" class="rounded-circle darkened-img"
-                                 src="{% static 'img/profil_app.jpg' %}"
+                                 src="{{ post.image.url }}"
                                  alt="image profil">
-                            <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">Boris</a></span>
+                            <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{ post.author_or_default }}</a></span>
                             <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                            <span class="text-white">13 Feb 2024</span>
+                            <span class="text-white h6">{{ post.created_on }}</span>
                         </div>
                     </div>
                 </div>
@@ -35,20 +38,18 @@
                     <div class="col-12">
                         <div class="img-justify-second position-relative">
                             <img style="height: 100%; filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{% static 'img/img_11.jpg' %}" alt="">
+                                 src="{{ post_1.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                                 <span style="font-size: small; margin-top: -30px"
                                       class="position-absolute bg-info ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Chess</span>
-                                <a href="#" class="h4 title-link text-white title-link-white">The title of my first
-                                    featured article.</a>
+                                <a href="#" class="h4 title-link text-white title-link-white">{{post_1.title}}.</a>
                                 <div class="position-relative montserrat-card-text">
-                                    <span class="text-white h6 ms-3">by <a href="#"
-                                                                           class="title-link-white">Boris</a></span>
+                                    <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                                        13 Feb 2024
+                                        {{ post_1.created_on }}
                                     </span>
                                 </div>
                             </div>
@@ -57,20 +58,19 @@
                     <div class="col-12 col-lg-6">
                         <div class="img-justify-second position-relative">
                             <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{% static 'img/img_12.jpg' %}" alt="">
+                                 src="{{ post_2.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                                 <span style="font-size: medium; margin-top: -35px"
                                       class="position-absolute bg-primary ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Development</span>
-                                <a href="#" class="h4 title-link text-white title-link-white">The title of my first
-                                    featured article.</a>
+                                <a href="#" class="h4 title-link text-white title-link-white">{{ post_2.title }}.</a>
                                 <div class="position-relative montserrat-card-text">
                                     <span class="text-white h6 ms-3">by <a href="#"
-                                                                           class="title-link-white">Boris</a></span>
+                                                                           class="title-link-white">{{ post_2.author_or_default }}</a></span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                                        13 Feb 2024
+                                        {{ post_2.created_on }}
                                     </span>
                                 </div>
                             </div>
@@ -79,20 +79,19 @@
                     <div class="col-12 col-lg-6">
                         <div class="img-justify-second position-relative">
                             <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{% static 'img/img_13.jpg' %}" alt="">
+                                 src="{{ post_3.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                                 <span style="font-size: medium; margin-top: -35px"
                                       class="position-absolute bg-success ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Work</span>
-                                <a href="#" class="h4 title-link text-white title-link-white">The title of my first
-                                    featured article.</a>
+                                <a href="#" class="h4 title-link text-white title-link-white">{{ post_3.title }}.</a>
                                 <div class="position-relative montserrat-card-text">
                                     <span class="text-white h6 ms-3">by <a href="#"
-                                                                           class="title-link-white">Boris</a></span>
+                                                                           class="title-link-white">{{ post_3.author_or_default }}</a></span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                                        13 Feb 2024
+                                        {{ post_3.created_on }}
                                     </span>
                                 </div>
                             </div>
@@ -103,5 +102,7 @@
         </div>
     </div>
 </section>
+
+<!--END featured post-->
 
 {% endblock %}
