@@ -18,9 +18,14 @@ def home_view(request):
     post_1 = posts[1]
     post_2 = posts[2]
     post_3 = posts[3]
-    context = {"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3, "posts": posts}
+    context = {"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3, "posts": posts[4:10]}
     return render(request, "blog/posts_list.html", context)
 
 
 def image_view(request):
     return render(request, "blog/article_01.html")
+
+
+def post_view(request, slug):
+    post = BlogPost.objects.get(slug=slug)
+    return render(request, "blog/post_view.html", context={"post": post})
