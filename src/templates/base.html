@@ -23,7 +23,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container">
-        <a class="navbar-brand roboto-black-italic" href="{% url 'home_view' %}">JAPE-OFFICIEL</a>
+        <a href="{% url 'home_view' %}"></a>
+        <a class="navbar-brand roboto-black-italic" href="{% url 'home_view' %}"><img src="{% static 'img/logojape.bmp' %}" alt="" width="50px" class="border border-success d-inline"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
