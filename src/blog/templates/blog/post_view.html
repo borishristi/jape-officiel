@@ -12,27 +12,26 @@
     <div class="col-12 mt-3 m-0 rounded">
         <img src="{{ post.image.url }}" alt="" class="w-100">
     </div>
-
-    <div class="row container m-0 mt-3 p-3">
-        <div class="col-lg-9 p-0">
-            <article>
-                <h1 class="text-center mt-3 mb-5 poppins-bold article-title-design">{{ post.title }}</h1>
-                <div>
-                    <p class="poppins-regular post-design">{{ post.content|safe }}.</p>
-                </div>
-                <div class="mt-5">
-                    <img width="47px" class="rounded-circle darkened-img"
-                         src="{% static 'img/profil_app.jpg' %}"
-                         alt="image profil">
-                    <span class="h6 ms-3">by <a href="#" class="title-link">{{ post.author_or_default }}</a></span>
-                    <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                    <span class="h6 my-auto ms-2"> {{ post.created_on }}</span></div>
-            </article>
-        </div>
-        <hr
-                class="my-3">
-        <div class="col-lg-3">
-            <h3>Categories</h3>
+    <div class="col-12">
+        <div class="row container m-0 mt-3 p-3">
+            <div class="col-lg-9 p-0">
+                <article>
+                    <h1 class="text-center mb-5 poppins-bold article-title-design">{{ post.title }}</h1>
+                    <div>
+                        <p class="poppins-regular post-design">{{ post.content|safe }}.</p>
+                    </div>
+                    <div class="mt-5">
+                        <img width="47px" class="rounded-circle darkened-img"
+                             src="{% static 'img/profil_app.jpg' %}"
+                             alt="image profil">
+                        <span class="h6 ms-3">by <a href="#" class="title-link">{{ post.author_or_default }}</a></span>
+                        <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
+                        <span class="h6 my-auto ms-2"> {{ post.created_on }}</span></div>
+                </article>
+            </div>
+            <div class="col-lg-3  p-0">
+                <h4 class="text-center">Categories</h4>
+            </div>
         </div>
     </div>
 </section>

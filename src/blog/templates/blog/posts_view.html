@@ -20,7 +20,7 @@
                 </div>
                 <div class="row">
                     {% for post in posts %}
-                    <div class="col-6">
+                    <div class="col-sm-6">
                         <div class="card border-0 p-0 m-0" style="width: 100%; min-height: 450px">
                             <img src="{{ post.image.url }}"
                                  class="img-hover rounded img-fluid card-img-top position-relative"
@@ -107,7 +107,7 @@
                                                      alt="">
                                             </div>
                                             <div class="col-8">
-                                                <h6 class="title-link">{{ r_post.title }}</h6>
+                                                <h6><a class="title-link" href="{% url 'post_view' slug=r_post.slug %}">{{ r_post.title }}</a></h6>
                                             </div>
                                         </div>
                                     </div>
