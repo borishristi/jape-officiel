@@ -130,7 +130,7 @@
                                 <div class="position-relative">
                                     <img width="47px" class="rounded-circle" src="{% static 'img/profil_app.jpg' %}"
                                          alt="image profil">
-                                    <span class="h6 ms-2 montserrat-main-text">{{ post.author_or_default }}</span>
+                                    <span class="h6 ms-2 montserrat-main-text title-link">{{ post.author_or_default }}</span>
                                     <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
                                     <span class="montserrat-card-text">{{ post.created_on }}</span><br>
                                 </div>
@@ -139,7 +139,7 @@
                     </div>
                     {% endfor %}
 
-                    <div class="col-12 d-grid gap-2 justify-content-center">
+                    <div class="col-12 d-grid gap-2 mb-3 justify-content-center">
                         <a class="btn btn-light btn-outline-primary" href="#">Load more post <i
                                 class="fa-solid fa-arrow-down" style="color: #0D6EFD"></i></a>
                     </div>
