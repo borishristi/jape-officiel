@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'img/logojape.bmp' %}">
     {% block title %}
 
     {% endblock %}
@@ -23,7 +24,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container">
-        <a href="{% url 'home_view' %}"></a>
         <a class="navbar-brand roboto-black-italic" href="{% url 'home_view' %}"><img src="{% static 'img/logojape.bmp' %}" alt="" width="50px" class="border border-success d-inline"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +32,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 roboto-regular">
                 <li class="nav-item">
-                    <a class="nav-link text-white title-link-nav" aria-current="page" href="#">Home</a>
+                    <a class="nav-link text-white title-link-nav" aria-current="page" href="% url 'home_view' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white title-link-nav" href="#">Blog</a>
+                    <a class="nav-link text-white title-link-nav" href="{% url 'posts_view' %}">Blog</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white title-link-nav" href="#" id="navbarDropdown"

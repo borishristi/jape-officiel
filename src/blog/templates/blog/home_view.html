@@ -140,7 +140,7 @@
                     {% endfor %}
 
                     <div class="col-12 d-grid gap-2 mb-3 justify-content-center">
-                        <a class="btn btn-light btn-outline-primary" href="#">Load more post <i
+                        <a class="btn btn-light btn-outline-primary" href="{% url 'posts_view' %}">Load more post <i
                                 class="fa-solid fa-arrow-down" style="color: #0D6EFD"></i></a>
                     </div>
                 </div>
@@ -190,20 +190,21 @@
                     {% endfor %}
 
                     <a class="text-center text-dark" href="#">View all categories</a>
+
                     <div class="col-12 mt-5 mb-3 montserrat-card-text">
                         <div class="row g-2" style="height: 300px">
                             <div class="col-6 col-lg-12 p-0">
                                 <div class="row g-2">
                                     <div><h4 class="montserrat-title_card title-link">Recent post</h4></div>
-                                    {% for post in posts %}
+                                    {% for r_post in r_posts %}
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-4 img-fluid">
-                                                    <img class="img-fluid rounded" src="{{ post.image.url }}"
+                                                    <img class="img-fluid rounded" src="{{ r_post.image.url }}"
                                                          alt="">
                                                 </div>
                                                 <div class="col-8">
-                                                    <h6 class="title-link">{{ topic.title }}</h6>
+                                                    <h6 class="title-link">{{ r_post.title }}</h6>
                                                 </div>
                                             </div>
                                         </div>
