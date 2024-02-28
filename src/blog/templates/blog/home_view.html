@@ -16,7 +16,8 @@
                         <span style="font-size: medium; margin-top: -35px"
                               class="position-absolute bg-danger ps-2 pe-2 rounded-3 text-white"><i
                                 class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>Livestyle</span>
-                        <a href="{% url 'post_view' slug=post.slug %}" class="h2 title-link text-white title-link-white">{{ post.title }}.</a>
+                        <a href="{% url 'post_view' slug=post.slug %}"
+                           class="h2 title-link text-white title-link-white">{{ post.title }}.</a>
                         <p class="text-white">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
                         <div class="position-relative montserrat-card-text">
                             <img width="47px" class="rounded-circle darkened-img"
@@ -40,7 +41,8 @@
                                       class="position-absolute bg-info ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Chess</span>
-                                <a href="{% url 'post_view' slug=post_1.slug %}" class="h5 title-link text-white title-link-white">{{post_1.title}}.</a>
+                                <a href="{% url 'post_view' slug=post_1.slug %}"
+                                   class="h5 title-link text-white title-link-white">{{post_1.title}}.</a>
                                 <div class="position-relative montserrat-card-text">
                                     <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
                                     <span class="text-white" style="display: inline-block">
@@ -60,7 +62,8 @@
                                       class="position-absolute bg-primary ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Develop</span>
-                                <a href="{% url 'post_view' slug=post_2.slug %}" class="h6 title-link text-white title-link-white">{{ post_2.title }}.</a>
+                                <a href="{% url 'post_view' slug=post_2.slug %}"
+                                   class="h6 title-link text-white title-link-white">{{ post_2.title }}.</a>
                                 <div class="position-relative montserrat-card-text">
                                     <span class="text-white h6 ms-3">by <a href="#"
                                                                            class="title-link-white">{{ post_2.author_or_default }}</a></span>
@@ -81,7 +84,8 @@
                                       class="position-absolute bg-success ps-2 pe-2 rounded-3 text-white"><i
                                         class="fa-solid fa-circle p-1 fa-xs"
                                         style="color: #ffffff;"></i>Work</span>
-                                <a href="{% url 'post_view' slug=post_3.slug %}" class="h6 title-link text-white title-link-white">{{ post_3.title }}.</a>
+                                <a href="{% url 'post_view' slug=post_3.slug %}"
+                                   class="h6 title-link text-white title-link-white">{{ post_3.title }}.</a>
                                 <div class="position-relative montserrat-card-text">
                                     <span class="text-white h6 ms-3">by <a href="#"
                                                                            class="title-link-white">{{ post_3.author_or_default }}</a></span>
@@ -125,7 +129,8 @@
                                 Livestyle
                             </span>
                             <div class="card-body">
-                                <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card"><h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5></a>
+                                <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card">
+                                    <h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5></a>
                                 <p class="card-text montserrat-card-text">{{ post.content|safe|truncatewords:20 }}.</p>
                                 <div class="position-relative">
                                     <img width="47px" class="rounded-circle" src="{% static 'img/profil_app.jpg' %}"
@@ -146,50 +151,56 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div data-sticky data-margin-top="80" data-sticky-for="767"></div>
-                <div class="row">
-                    <div class="col-4 p-1">
-                        <div class="rounded" style="background-color: #5270A4">
-                            <a href="#" class="rounded text-center text-white-force p-3 d-block"
-                               style=" text-decoration: none;">
-                                <i class="fab fa-facebook-square fs-5 mb-2" style="color: #ffffff;"></i>
-                                <h6 class="m-0 text-white">1.5K</h6>
-                                <span class="small text-white">Fans</span>
-                            </a>
+                <div data-sticky data-margin-top="80" data-sticky-for="767">
+                    <div class="row">
+                        <div class="col-4 p-1">
+                            <div class="rounded" style="background-color: #5270A4">
+                                <a href="#" class="rounded text-center text-white-force p-3 d-block"
+                                   style=" text-decoration: none;">
+                                    <i class="fab fa-facebook-square fs-5 mb-2" style="color: #ffffff;"></i>
+                                    <h6 class="m-0 text-white">1.5K</h6>
+                                    <span class="small text-white">Fans</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 p-1">
+                            <div class="rounded" style="background-color: #B53C9F">
+                                <a href="#" class="rounded text-center text-white-force p-3 d-block"
+                                   style=" text-decoration: none;">
+                                    <i class="fab fa-instagram-square fs-5 mb-2" style="color: #ffffff;"></i>
+                                    <h6 class="m-0 text-white">900K</h6>
+                                    <span class="small text-white">Fans</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 p-1">
+                            <div class="rounded" style="background-color: #BC423F">
+                                <a href="#" class="rounded text-center text-white-force p-3 d-block"
+                                   style=" text-decoration: none;">
+                                    <i class="fab fa-youtube-square fs-5 mb-2" style="color: #ffffff;"></i>
+                                    <h6 class="m-0 text-white">4.5K</h6>
+                                    <span class="small text-white">Fans</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 p-1">
-                        <div class="rounded" style="background-color: #B53C9F">
-                            <a href="#" class="rounded text-center text-white-force p-3 d-block"
-                               style=" text-decoration: none;">
-                                <i class="fab fa-instagram-square fs-5 mb-2" style="color: #ffffff;"></i>
-                                <h6 class="m-0 text-white">900K</h6>
-                                <span class="small text-white">Fans</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-4 p-1">
-                        <div class="rounded" style="background-color: #BC423F">
-                            <a href="#" class="rounded text-center text-white-force p-3 d-block"
-                               style=" text-decoration: none;">
-                                <i class="fab fa-youtube-square fs-5 mb-2" style="color: #ffffff;"></i>
-                                <h6 class="m-0 text-white">4.5K</h6>
-                                <span class="small text-white">Fans</span>
-                            </a>
-                        </div>
-                    </div>
-                    <h4 class="mt-4 pb-2 montserrat-title_card"><a href="#" class="title-link">Trending topics</a></h4>
-                    {% for topic in posts %}
-                        <div class="img-hover col-12 mt-1 mb-2 rounded"
-                             style="background-image: url('{{ topic.image.url }}'); background-size: cover; height: 65px">
-                                <span style="font-size: small"
-                                      class="position-absolute bg-danger px-1 pb-1 me-3 mt-3 rounded-3 text-white title-link">
-                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>Livestyle
-                                </span>
-                        </div>
-                    {% endfor %}
+                </div>
 
-                    <a class="text-center text-dark" href="#">View all categories</a>
+                <h1 class="mt-4 mb-3 pb-2 montserrat-title_card text-center"><a href="#" class="title-link h3">Catégories</a></h1>
+
+                <div>
+                    <div class="row">
+                        {% for category in categories %}
+                        <div class="col-12">
+                            <h1 class="p-2 m-1 rounded-3 img-hover"
+                                style="font-size: medium;  background-color: {{ category.color }};">
+                                <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>
+                                {{ category.title }}
+                            </h1>
+                        </div>
+                        {% endfor %}
+                        <a class="text-center text-dark mt-3" href="#">View all categories</a>
+                    </div>
 
                     <div class="col-12 mt-5 mb-3 montserrat-card-text">
                         <div class="row g-2" style="height: 300px">
@@ -197,17 +208,17 @@
                                 <div class="row g-2">
                                     <div><h4 class="montserrat-title_card title-link">Recent post</h4></div>
                                     {% for r_post in r_posts %}
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-4 img-fluid">
-                                                    <img class="img-fluid rounded" src="{{ r_post.image.url }}"
-                                                         alt="">
-                                                </div>
-                                                <div class="col-8">
-                                                    <h6 class="title-link">{{ r_post.title }}</h6>
-                                                </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-4 img-fluid">
+                                                <img class="img-fluid rounded" src="{{ r_post.image.url }}"
+                                                     alt="">
+                                            </div>
+                                            <div class="col-8">
+                                                <h6 class="title-link">{{ r_post.title }}</h6>
                                             </div>
                                         </div>
+                                    </div>
                                     {% endfor %}
                                 </div>
                             </div>

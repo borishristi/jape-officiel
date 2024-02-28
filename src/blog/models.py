@@ -1,4 +1,5 @@
 from django.db import models
+from colorfield.fields import ColorField
 from django.contrib.auth import get_user_model
 
 # Create your models here.
@@ -7,12 +8,18 @@ from django.utils.text import slugify
 User = get_user_model()
 
 
+class CategoryPost(models.Model):
+    title = models.CharField(max_length=100, unique=True, verbose_name="Categorie")
+    color = ColorField(default='#0D6EFD', unique=True)
+
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name='Titre')
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     last_update = models.DateTimeField(auto_now=True)
     created_on = models.DateField(blank=True, null=True)
+    category = models.ManyToManyField(CategoryPost)
     published = models.BooleanField(default=False, verbose_name="Publié")
     image = models.ImageField(upload_to="images")
     content = models.TextField(blank=True, verbose_name='Contenu')

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'livereload',
+    'colorfield',
     'django.contrib.staticfiles',
     'blog',
 ]
