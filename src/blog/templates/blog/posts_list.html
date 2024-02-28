@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -19,7 +20,7 @@
                         <p class="text-white">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
                         <div class="position-relative montserrat-card-text">
                             <img width="47px" class="rounded-circle darkened-img"
-                                 src="{{ post.image.url }}"
+                                 src="{% static 'img/profil_app.jpg' %}"
                                  alt="image profil">
                             <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{ post.author_or_default }}</a></span>
                             <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
@@ -124,10 +125,10 @@
                                 Livestyle
                             </span>
                             <div class="card-body">
-                                <h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5>
+                                <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card"><h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5></a>
                                 <p class="card-text montserrat-card-text">{{ post.content|safe|truncatewords:20 }}.</p>
                                 <div class="position-relative">
-                                    <img width="47px" class="rounded-circle" src="{{ post.image.url }}"
+                                    <img width="47px" class="rounded-circle" src="{% static 'img/profil_app.jpg' %}"
                                          alt="image profil">
                                     <span class="h6 ms-2 montserrat-main-text">{{ post.author_or_default }}</span>
                                     <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>

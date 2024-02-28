@@ -1,11 +1,3 @@
-/*<!--POPPINS-->*/
-
-.poppins-extra-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
 .poppins-light {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -36,24 +28,6 @@
   font-style: normal;
 }
 
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.poppins-black {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
 .poppins-light-italic {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -72,146 +46,221 @@
   font-style: italic;
 }
 
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
 
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
+/*!*<!--POPPINS-->*!*/
 
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
+/*.poppins-extra-light {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 200;*/
+/*  font-style: normal;*/
+/*}*/
 
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
+/*.poppins-light {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-regular {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-medium {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 500;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-semibold {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 600;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-bold {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 700;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-extrabold {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 800;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-black {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 900;*/
+/*  font-style: normal;*/
+/*}*/
+
+/*.poppins-extralight-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 200;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-light-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-regular-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-medium-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 500;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-semibold-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 600;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-bold-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 700;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-extrabold-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 800;*/
+/*  font-style: italic;*/
+/*}*/
+
+/*.poppins-black-italic {*/
+/*  font-family: "Poppins", sans-serif;*/
+/*  font-weight: 900;*/
+/*  font-style: italic;*/
+/*}*/
 
 
-/*MONTSERRAT*/
+/*!*MONTSERRAT*!*/
 
-/* <uniquifier>: Use a uniquifier for the class name
-<weight>: Use a value from 100 to 900*/
-.montserrat-card-text {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
+/*!* <uniquifier>: Use a uniquifier for the class name*/
+/*<weight>: Use a value from 100 to 900*!*/
+/*.montserrat-card-text {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 200;*/
+/*  font-style: normal;*/
+/*}*/
 
-.montserrat-main-text {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
+/*.montserrat-main-text {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 300;*/
+/*  font-style: normal;*/
+/*}*/
 
-.montserrat-main-text-italic {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: italic;
-}
-.montserrat-second-text {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
+/*.montserrat-main-text-italic {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 300;*/
+/*  font-style: italic;*/
+/*}*/
+/*.montserrat-second-text {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 400;*/
+/*  font-style: normal;*/
+/*}*/
 
-.montserrat-title_card {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
+/*.montserrat-title_card {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 600;*/
+/*  font-style: normal;*/
+/*}*/
 
-.montserrat-second-text-italic {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-}
+/*.montserrat-second-text-italic {*/
+/*  font-family: "Montserrat", sans-serif;*/
+/*  font-optical-sizing: auto;*/
+/*  font-weight: 400;*/
+/*  font-style: italic;*/
+/*}*/
 
-/* ROBOTO */
+/*!* ROBOTO *!*/
 
-.roboto-thin {
-  font-family: "Roboto", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
+/*.roboto-thin {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 100;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-light {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
+/*.roboto-light {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-regular {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+/*.roboto-regular {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-medium {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
+/*.roboto-medium {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 500;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-bold {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
+/*.roboto-bold {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 700;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-black {
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
+/*.roboto-black {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 900;*/
+/*  font-style: normal;*/
+/*}*/
 
-.roboto-thin-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
+/*.roboto-thin-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 100;*/
+/*  font-style: italic;*/
+/*}*/
 
-.roboto-light-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
+/*.roboto-light-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-style: italic;*/
+/*}*/
 
-.roboto-regular-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
+/*.roboto-regular-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 400;*/
+/*  font-style: italic;*/
+/*}*/
 
-.roboto-medium-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
+/*.roboto-medium-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 500;*/
+/*  font-style: italic;*/
+/*}*/
 
-.roboto-bold-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
+/*.roboto-bold-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 700;*/
+/*  font-style: italic;*/
+/*}*/
 
-.roboto-black-italic {
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
+/*.roboto-black-italic {*/
+/*  font-family: "Roboto", sans-serif;*/
+/*  font-weight: 900;*/
+/*  font-style: italic;*/
+/*}*/
