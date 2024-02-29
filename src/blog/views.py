@@ -20,7 +20,8 @@ def home_view(request):
     post_1 = posts[1]
     post_2 = posts[2]
     post_3 = posts[3]
-    context = {"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3, "posts": posts[4:10], "r_posts": posts[:4], "categories": categories}
+    context = {"post": post, "post_1": post_1, "post_2": post_2, "post_3": post_3, "posts": posts[4:10],
+               "r_posts": posts[:4], "categories": categories}
     return render(request, "blog/home_view.html", context)
 
 
@@ -31,9 +32,10 @@ def image_view(request):
 def post_view(request, slug):
     post = BlogPost.objects.get(slug=slug)
     posts = BlogPost.objects.all().filter(published=True)
-    categories = CategoryPost.objects.all()
+    categories = CategoryPost.objects.all().filter()
+    categories_post = post.category.all()
 
-    context = {"post": post, "posts": posts[:4], "categories": categories[:6]}
+    context = {"post": post, "posts": posts[:4], "categories": categories[:6], "categories_post": categories_post}
 
     return render(request, "blog/post_view.html", context)
 

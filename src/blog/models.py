@@ -12,6 +12,9 @@ class CategoryPost(models.Model):
     title = models.CharField(max_length=100, unique=True, verbose_name="Categorie")
     color = ColorField(default='#0D6EFD', unique=True)
 
+    def __str__(self):
+        return self.title
+
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name='Titre')
