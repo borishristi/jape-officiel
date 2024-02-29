@@ -30,9 +30,17 @@ def image_view(request):
 
 def post_view(request, slug):
     post = BlogPost.objects.get(slug=slug)
-    return render(request, "blog/post_view.html", context={"post": post})
+    posts = BlogPost.objects.all().filter(published=True)
+    categories = CategoryPost.objects.all()
+
+    context = {"post": post, "posts": posts[:4], "categories": categories[:6]}
+
+    return render(request, "blog/post_view.html", context)
 
 
 def posts_view(request):
     posts = BlogPost.objects.all().filter(published=True)
-    return render(request, "blog/posts_view.html", {"posts": posts, "categories": posts[:4], "r_posts": posts[5:9]})
+    categories = CategoryPost.objects.all()
+    context = {"posts": posts, "categories": posts[:4], "r_posts": posts[5:9], "categories": categories}
+
+    return render(request, "blog/posts_view.html", context)

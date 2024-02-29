@@ -10,7 +10,7 @@
 
 <section class="container">
     <div class="col-12 mt-3 m-0 rounded">
-        <img src="{{ post.image.url }}" alt="" class="w-100">
+        <img src="{{ post.image.url }}" alt="" class="w-100 rounded-3">
     </div>
     <div class="col-12">
         <div class="row container m-0 mt-3 p-3">
@@ -20,19 +20,67 @@
                     <div>
                         <p class="poppins-regular post-design">{{ post.content|safe }}.</p>
                     </div>
-                    <div class="mt-5">
-                        <img width="47px" class="rounded-circle darkened-img"
-                             src="{% static 'img/profil_app.jpg' %}"
-                             alt="image profil">
-                        <span class="h6 ms-3">by <a href="#" class="title-link">{{ post.author_or_default }}</a></span>
-                        <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                        <span class="h6 my-auto ms-2"> {{ post.created_on }}</span></div>
+                    <div class="mt-5 p-0 border border-info">
+                        <div class="row">
+                            <div class="col-1">
+                                <img width="47px" class="rounded-circle"
+                                     src="{% static 'img/profil_app.jpg' %}"
+                                     alt="image profil">
+                            </div>
+                            <div class="col-8 my-3">
+                                <span class="h6 ms-3">by <a href="#" class="title-link">{{ post.author_or_default }}</a></span>
+                                <i class="fa-solid fa-clock fa-xs mx-3" style="color: #0D6EFD"></i>
+                                <span class="h6"> {{ post.created_on }}</span>
+                            </div>
+                        </div>
+                    </div>
                 </article>
             </div>
-            <div class="col-lg-3  p-0">
-                <h4 class="text-center">Categories</h4>
+            <div class="col-lg-3">
+                <div class="col-12 m-2">
+                    <h1 class="text-center mt-5">Categories</h1>
+                    <div class="row mt-3">
+                        {% for category in categories %}
+                        <div class="col-12 img-hover mt-1 my-2 rounded border border-info"
+                             style="background-color: {{ category.color }}">
+                            <span class="text-center"><i class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs"
+                                                         style="color: #ffffff;"></i> <h3 class="d-inline">{{ category.title }}</h3></span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row g-2" style="height: 300px">
+                        <div class="col-6 col-lg-12 p-0">
+                            <div class="row g-2">
+                                <div><h4 class="montserrat-title_card title-link">Recent post</h4></div>
+                                {% for post in posts %}
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 img-fluid">
+                                            <img class="img-fluid rounded" src="{{ post.image.url }}"
+                                                 alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <h6 class="title-link">{{ post.title }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-12 p-0">
+                            <div class="ps-1 pt-2">
+                                <img class="img-hover img-fluid w-100"
+                                     src="{% static 'img/advertising.jpg' %}" alt="Avertising"
+                                     style="max-height: 350px; border-radius: 5%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 {% endblock %}
