@@ -10,10 +10,20 @@ User = get_user_model()
 
 class CategoryPost(models.Model):
     title = models.CharField(max_length=100, unique=True, verbose_name="Categorie")
+    cat_slug = models.SlugField(max_length=100, blank=True, editable=True)
     color = ColorField(default='#0D6EFD', unique=True)
+
+    class Meta:
+        verbose_name = "Catégorie"
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.cat_slug:
+            self.cat_slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
 
 
 class BlogPost(models.Model):

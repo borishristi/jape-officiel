@@ -70,7 +70,7 @@
                                                  alt="">
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="title-link">{{ post.title }}</h6>
+                                            <h6 class="title-link"><a class="title-link" href="{% url 'post_view' slug=post.slug %}">{{post.title }}</a></h6>
                                         </div>
                                     </div>
                                 </div>
