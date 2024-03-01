@@ -52,7 +52,12 @@ class BlogPost(models.Model):
 
     @property
     def author_or_default(self):
-        return f"Par {self.author.first_name} {self.author.last_name}" if self.author else "auteur inconnu"
+        return f"Par {self.author.first_name} {self.author.last_name}" if self.author else "Par auteur inconnu"
+
+    # @property
+    # def category_post(self):
+    #     category = self.category
+    #     return category.title
 
     # def get_absolute_url(self):
     #     return reverse('posts:home')

@@ -13,19 +13,27 @@
                     <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
                          src="{{ post.image.url }}" alt="">
                     <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                        <span style="font-size: medium; margin-top: -35px"
-                              class="position-absolute bg-danger ps-2 pe-2 rounded-3 text-white"><i
-                                class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>Livestyle</span>
+                        <!--                        <span style="font-size: medium; margin-top: -35px"-->
+                        <!--                              class="position-absolute bg-danger ps-2 pe-2 rounded-3 text-white">-->
+                        <!--                            <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
+                        <!--                            Livestyle-->
+                        <!--                        </span>-->
                         <a href="{% url 'post_view' slug=post.slug %}"
                            class="h2 title-link text-white title-link-white">{{ post.title }}.</a>
-                        <p class="text-white">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
-                        <div class="position-relative montserrat-card-text">
-                            <img width="47px" class="rounded-circle darkened-img"
-                                 src="{% static 'img/profil_app.jpg' %}"
-                                 alt="image profil">
-                            <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{ post.author_or_default }}</a></span>
-                            <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                            <span class="text-white h6">{{ post.created_on }}</span>
+                        <p class="text-white mt-3">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
+                        <div class="position-relative montserrat-card-text mt-3">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img width="47px" class="rounded-circle darkened-img"
+                                         src="{% static 'img/profil_app.jpg' %}"
+                                         alt="image profil">
+                                </div>
+                                <div class="col-8 text-white h6 mt-3 ms-3">
+                                    <a href="#" class="title-link-white"> {{ post.author_or_default }}</a>
+                                    <i class="fa-solid fa-clock fa-xs ms-3 me-2" style="color: #0D6EFD"></i>
+                                    {{ post.created_on }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,14 +45,15 @@
                             <img style="height: 100%; filter: brightness(70%);" class="img-fluid img-img img-hover"
                                  src="{{ post_1.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                                <span style="font-size: small; margin-top: -30px"
-                                      class="position-absolute bg-info ps-2 pe-2 rounded-3 text-white"><i
-                                        class="fa-solid fa-circle p-1 fa-xs"
-                                        style="color: #ffffff;"></i>Chess</span>
+                                <!--                                <span style="font-size: small; margin-top: -30px"-->
+                                <!--                                      class="position-absolute bg-info ps-2 pe-2 rounded-3 text-white">-->
+                                <!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
+                                <!--                                    Chess-->
+                                <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_1.slug %}"
                                    class="h5 title-link text-white title-link-white">{{post_1.title}}.</a>
-                                <div class="position-relative montserrat-card-text">
-                                    <span class="text-white h6 ms-3">by <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
+                                <div class="position-relative montserrat-card-text mt-3">
+                                    <span class="text-white h6 ms-3"> <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
                                         {{ post_1.created_on }}
@@ -58,15 +67,17 @@
                             <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
                                  src="{{ post_2.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                                <span style="font-size: medium; margin-top: -35px"
-                                      class="position-absolute bg-primary ps-2 pe-2 rounded-3 text-white"><i
-                                        class="fa-solid fa-circle p-1 fa-xs"
-                                        style="color: #ffffff;"></i>Develop</span>
+                                <!--                                <span style="font-size: medium; margin-top: -35px"-->
+                                <!--                                      class="position-absolute bg-primary ps-2 pe-2 rounded-3 text-white">-->
+                                <!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
+                                <!--                                    Develop-->
+                                <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_2.slug %}"
                                    class="h6 title-link text-white title-link-white">{{ post_2.title }}.</a>
-                                <div class="position-relative montserrat-card-text">
-                                    <span class="text-white h6 ms-3">by <a href="#"
-                                                                           class="title-link-white">{{ post_2.author_or_default }}</a></span>
+                                <div class="position-relative montserrat-card-text mt-3">
+                                    <span class="text-white h6 ms-3">
+                                        <a href="#" class="title-link-white">{{ post_2.author_or_default }}</a>
+                                    </span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
                                         {{ post_2.created_on }}
@@ -80,15 +91,17 @@
                             <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
                                  src="{{ post_3.image.url }}" alt="">
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                                <span style="font-size: medium; margin-top: -35px"
-                                      class="position-absolute bg-success ps-2 pe-2 rounded-3 text-white"><i
-                                        class="fa-solid fa-circle p-1 fa-xs"
-                                        style="color: #ffffff;"></i>Work</span>
+                                <!--                                <span style="font-size: medium; margin-top: -35px"-->
+                                <!--                                      class="position-absolute bg-success ps-2 pe-2 rounded-3 text-white">-->
+                                <!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
+                                <!--                                    Work-->
+                                <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_3.slug %}"
                                    class="h6 title-link text-white title-link-white">{{ post_3.title }}.</a>
-                                <div class="position-relative montserrat-card-text">
-                                    <span class="text-white h6 ms-3">by <a href="#"
-                                                                           class="title-link-white">{{ post_3.author_or_default }}</a></span>
+                                <div class="position-relative montserrat-card-text mt-3">
+                                    <span class="text-white h6 ms-3">
+                                        <a href="#" class="title-link-white"> {{ post_3.author_or_default }} </a>
+                                    </span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
                                         {{ post_3.created_on }}
@@ -105,7 +118,6 @@
 
 <!--END featured post-->
 
-
 <!--START ARTICLES SECTION-->
 
 <section class="mt-3">
@@ -114,8 +126,8 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-12">
-                        <h1><i class="fa-regular fa-hourglass-half fa-xs"></i>Today's top highlights</h1>
-                        <p class="title-link">Latest breaking news, pictures, videos, and special reports</p>
+                        <span class="d-block h1"><i class="fa-regular fa-hourglass-half fa-xs"></i>Les articles du blog</span>
+                        <p class="mb-2 mt-0">Dernières nouvelles, photos, vidéos et rapports spéciaux</p>
                     </div>
                     {% for post in posts %}
                     <div class="col-sm-6 pt-2 pe-2 ps-2 pt-0">
@@ -123,21 +135,25 @@
                             <img src="{{ post.image.url }}"
                                  class="img-hover rounded img-fluid card-img-top position-relative"
                                  alt="...">
-                            <span style="font-size: small"
-                                  class="position-absolute bg-danger px-1 pb-1 end-0 me-3 mt-3 rounded-3 text-white">
-                                <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>
-                                Livestyle
-                            </span>
+<!--                            <span style="font-size: small" class="position-absolute bg-danger px-1 pb-1 end-0 me-3 mt-3 rounded-3 text-white">-->
+<!--                                <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
+<!--                                Livestyle-->
+<!--                            </span>-->
                             <div class="card-body">
                                 <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card">
-                                    <h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5></a>
-                                <p class="card-text montserrat-card-text">{{ post.content|safe|truncatewords:20 }}.</p>
-                                <div class="position-relative">
-                                    <img width="47px" class="rounded-circle" src="{% static 'img/profil_app.jpg' %}"
-                                         alt="image profil">
-                                    <span class="h6 ms-2 montserrat-main-text title-link">{{ post.author_or_default }}</span>
-                                    <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                                    <span class="montserrat-card-text">{{ post.created_on }}</span><br>
+                                    <h5 class="card-title montserrat-title_card title-link h3">{{ post.title }}</h5></a>
+                                <p class="card-text montserrat-card-text mt-3">{{ post.content|safe|truncatewords:20 }}.</p>
+                                <div class="mt-3">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <img width="47px" class="rounded-circle"
+                                                 src="{% static 'img/profil_app.jpg' %}"
+                                                 alt="image profil">
+                                        </div>
+                                        <div class="col-8 my-3 ms-3">
+                                            <span class="h6 ms-3"><a href="#" class="title-link">{{ post.author_or_default }}</a></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +202,8 @@
                     </div>
                 </div>
 
-                <h1 class="mt-4 mb-3 pb-2 montserrat-title_card text-center"><a href="#" class="title-link h3">Catégories</a></h1>
+                <h1 class="mt-4 mb-3 pb-2 montserrat-title_card text-center"><a href="#" class="title-link h3">Catégories</a>
+                </h1>
 
                 <div>
                     <div class="row">

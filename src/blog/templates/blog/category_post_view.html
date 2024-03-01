@@ -14,11 +14,11 @@
         <div class="row">
             <div class="col-lg-9 m-0">
                 <div class="col-12">
-                    <h1 class="text-center mt-3 mb-3 h4"><i class="fa-solid fa-book fa-xs me-2"></i>Liste des articles de la catégorie {{ category_post.title }}</h1>
+                    <h1 class="text-center mt-3 mb-3 h4"><i class="fa-solid fa-book fa-xs me-2"></i>Liste des articles de la catégorie {{ category_post.title|upper }}</h1>
                 </div>
                 <div class="row">
                     {% for post in posts %}
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 my-2">
                         <div class="card border-0 p-0 m-0" style="width: 100%; min-height: 450px">
                             <img src="{{ post.image.url }}"
                                  class="img-hover rounded img-fluid card-img-top position-relative"
@@ -29,16 +29,16 @@
 <!--                                    {{ category_post.title }}-->
 <!--                                </span>-->
                             <div class="card-body">
-                                <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card">
-                                    <h5 class="card-title montserrat-title_card title-link">{{ post.title }}</h5>
+                                <a href="{% url 'post_view' slug=post.slug %}" class="card-title montserrat-title_card title-link montserrat-title_card h3">
+                                    {{ post.title }}
                                 </a>
-                                <p class="card-text montserrat-card-text">{{ post.content|safe|truncatewords:18 }}.</p>
-                                <div class="position-relative">
+                                <p class="card-text montserrat-card-text mt-3">{{ post.content|safe|truncatewords:18 }}.</p>
+                                <div class="position-relative mt-3">
                                     <img width="47px" class="rounded-circle" src="{% static 'img/profil_app.jpg' %}"
                                          alt="image profil">
                                     <span class="h6 ms-2 montserrat-main-text title-link">{{ post.author_or_default }}</span>
                                     <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
-                                    <span class="montserrat-card-text">{{ post.created_on }}</span><br>
+                                    <span class="montserrat-card-text">{{ post.created_on|date:"j F Y" }}</span><br>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 mt-sm-3">
                 <div data-sticky data-margin-top="80" data-sticky-for="767"></div>
                 <div class="row">
                     <div class="col-4 p-1">
