@@ -54,5 +54,9 @@ def category_post_view(request, category):
     category_post = CategoryPost.objects.get(cat_slug=category)
     print(category_post.title)
     posts = BlogPost.objects.all().filter(published=True, category=category_post)
+    all_posts = BlogPost.objects.all().filter(published=True)[:4]
+    categories = CategoryPost.objects.all()
 
-    return render(request, "blog/category_post_view.html", {"posts": posts, "category_post": category_post})
+    context = {"posts": posts, "category_post": category_post, "categories": categories, "all_posts": all_posts}
+
+    return render(request, "blog/category_post_view.html", context)

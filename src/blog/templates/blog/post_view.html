@@ -28,7 +28,8 @@
                                      alt="image profil">
                             </div>
                             <div class="col-8 my-3">
-                                <span class="h6 ms-3"><a href="#" class="title-link">{{ post.author_or_default }}</a></span>
+                                <span class="h6 ms-3"><a href="#"
+                                                         class="title-link">{{ post.author_or_default }}</a></span>
                                 <i class="fa-solid fa-clock fa-xs mx-3" style="color: #0D6EFD"></i>
                                 <span class="h6"> {{ post.created_on }}</span>
                             </div>
@@ -36,9 +37,9 @@
                         <div class="col-12 ms-1">
                             <div class="row mt-2"></div>
                             {% for category_post in categories_post %}
-                            <span style="background-color: {{ category_post.color }}" class="p-1 rounded-3"><i
+                            <a style="text-decoration: none" href="{% url 'category' category=category_post.cat_slug %}"><span style="background-color: {{ category_post.color }}" class="p-1 rounded-3"><i
                                     class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs"
-                                    style="color: #ffffff;"></i>{{ category_post.title }}</span>
+                                    style="color: #ffffff;"></i>{{ category_post.title }}</span></a>
                             {% endfor %}
                         </div>
                     </div>
@@ -46,31 +47,40 @@
             </div>
             <div class="col-lg-3">
                 <div class="col-12 m-2">
-                    <h1 class="text-center mt-5">Categories</h1>
+                    <h1 class="text-center mt-5 h2">Categories</h1>
                     <div class="row mt-3">
                         {% for category in categories %}
-                        <div class="col-12 img-hover mt-1 my-2 rounded"
-                             style="background-color: {{ category.color }}">
-                            <span class="text-center"><i class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs"
-                                                         style="color: #ffffff;"></i> <h3 class="d-inline">{{ category.title }}</h3></span>
+                        <div class="col-sm-6 col-md-4 col-lg-12 my-1">
+                            <a class="title-link" href="{% url 'category' category=category.cat_slug %}">
+                                <div class="img-hover p-1 rounded"
+                                     style="background-size: cover; height: 40px; background-color: {{ category.color }} ">
+
+                                    <h1 style="font-size: small" class="rounded-3 text-dark text-center my-2">
+                                        <i class="fa-solid fa-circle p-1 fa-xs" style="color: #000000;"></i>
+                                        {{ category.title|upper }}
+                                    </h1>
+                                </div>
+                            </a>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-3 mb-3">
                     <div class="row g-2" style="height: 300px">
                         <div class="col-6 col-lg-12 p-0">
                             <div class="row g-2">
-                                <div><h4 class="montserrat-title_card title-link">Recent post</h4></div>
+                                <div><h4 class="montserrat-title_card h2">Recent post</h4></div>
                                 {% for post in posts %}
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-4 img-fluid">
-                                            <img class="img-fluid rounded" src="{{ post.image.url }}"
-                                                 alt="">
+                                            <img class="img-fluid rounded" src="{{ post.image.url }}" alt="">
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="title-link"><a class="title-link" href="{% url 'post_view' slug=post.slug %}">{{post.title }}</a></h6>
+                                            <h6 class="title-link">
+                                                <a class="title-link"
+                                                   href="{% url 'post_view' slug=post.slug %}">{{ post.title }}</a>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +98,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 {% endblock %}
