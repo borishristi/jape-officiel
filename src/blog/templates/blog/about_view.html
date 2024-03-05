@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>A propos de nous</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container p-0 mt-3">
+    <div class="m-0 position-relative">
+        <img style="max-height: 300px; background-size: cover; filter: brightness(50%)" class="w-100 rounded"
+             src="{% static 'img/img_9.jpg' %}" alt="">
+        <div class="col-12 text-center position-absolute bottom-50">
+            <span class="h1" style="text-align: center; color: white">A Propos de nous</span>
+        </div>
+    </div>
+    <div class="mt-3">
+        <span class="h3">Notre histoire</span>
+        <p class="mt-3 poppins-light" style="line-height: normal">
+            Il existe au sein de l’Eglise Presbytérienne Camerounaise (EPC) un mouvement de la jeunesse chrétienne
+            dénommée Jeunesse d’Action Protestante et Evangélique en abrégé J.A.P.E. Sa durée est illimitée. <br>
+            La JAPE fût créé en 1942 à Elat (Ebolowa) par Peter Brook et Mac Willney, sous l'appelation
+            BBK (Bisoé Bi Krist). En 1980 BBK devient JAPEC (Jeunesse d'Action Protestante et
+            Evangélique du Cameroun). Mais en 1988 à lors du 1er congrès national de la JAPEC à
+            Elat (Ebolowa, Sud Cameroun), il devient
+            <span style="font-weight: bold">JAPE (Jeunesse d'Action Protestante et Evangélique)</span>.
+            L'hymne de la JAPE est "Va partout dans le monde annoncer la bonne nouvelle" qui a été adopté
+            le 8 Août 1988 à Elat. Ses auteurs sont Samuel NWATSOCK pour les paroles, Lucien AZOMBO pour la musique et
+            l'arrangement a été fait par la JAPE.
+            Sa dévise est Dieu, le Prochain, Moi-même, nous sommes unis en Christ, le fondement de notre amour."
+            Son siège est fixé à Yaoundé BP 519. Il peut être transféré en tout autre lieu par décision de l’Assemblée
+            Générale de l’EPC, sur proposition du Congrès National de la JAPE.
+        </p>
+    </div>
+    <hr>
+    <div class="mt-3">
+        <span class="h3">Notre but</span>
+        <p class="mt-3 poppins-light" style="line-height: normal">
+            Ayant constaté une réelle difficulté a obtenir des informations et des données sur la JAPE, nous avons
+            pris l'initiative de créer cette plateforme qui permettra de mettre à disposition des jeunes de la JAPE,
+            fidèles de l'EPC et aux potentiels visiteurs du site. <br>
+            Cette plateforme devra permettre le partage d'enseignements, de documentation, la publication d'articles de
+            nature diverses au tour de l'Eglise en général et de la JAPE en particulier. <br>
+            Nous espérons que vous prendrez autant de plaisir à visiter ce site que nous en avons pris à le concevoir.
+            <br><br>
+        </p>
+        <span style="font-weight: bold; text-align: center">Gloire Soit A Dieu!</span>
+    </div>
+</div>
+
+{% endblock %}

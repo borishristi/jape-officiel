@@ -37,9 +37,16 @@
                         <div class="col-12 ms-1">
                             <div class="row mt-2"></div>
                             {% for category_post in categories_post %}
-                            <a style="text-decoration: none" href="{% url 'category' category=category_post.cat_slug %}"><span style="background-color: {{ category_post.color }}" class="p-1 rounded-3"><i
-                                    class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs"
-                                    style="color: #ffffff;"></i>{{ category_post.title }}</span></a>
+                            <a style="text-decoration: none" href="{%url 'category' category=category_post.cat_slug %}">
+                                {% if category_post.color == '#0D6EFD' %}
+                                <span style="background-color: {{ category_post.color }}; color: darkred" class="p-1 rounded-3">
+                                {% else %}
+                                <span style="background-color: {{ category_post.color }};" class="p-1 rounded-3">
+                                {% endif %}
+                                    <i class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs" style="color: #ffffff;"></i>
+                                    {{ category_post.title }}
+                                </span>
+                            </a>
                             {% endfor %}
                         </div>
                     </div>

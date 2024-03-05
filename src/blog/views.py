@@ -60,3 +60,8 @@ def category_post_view(request, category):
     context = {"posts": posts, "category_post": category_post, "categories": categories, "all_posts": all_posts}
 
     return render(request, "blog/category_post_view.html", context)
+
+
+def about_view(request):
+
+    return render(request, "blog/about_view.html")
