@@ -12,7 +12,7 @@
 <!--START ARTICLES SECTION-->
 
 <section class="mt-3">
-    <div class="container roboto-light">
+    <div class="container poppins-light">
         <div class="row">
             <div class="col-lg-9 m-0">
                 <div class="col-12">
@@ -22,10 +22,9 @@
                 <div class="row">
                     {% for post in posts %}
                     <div class="col-sm-6">
-                        <div class="card border-0 p-0 m-0 mb-3" style="width: 100%; min-height: 450px">
-                            <img src="{{ post.image.url }}"
-                                 class="img-hover rounded img-fluid card-img-top position-relative"
-                                 alt="...">
+                        <div class="shadow card border-0 p-0 m-0 mb-3" style="width: 100%; min-height: 450px">
+                            <img src="{{ post.image.url }}" style="height: 250px"
+                                 class="img-hover rounded img-fluid card-img-top position-relative" alt="...">
                             <!--                            <span style="font-size: small"-->
                             <!--                                  class="position-absolute bg-danger px-1 pb-1 end-0 me-3 mt-3 rounded-3 text-white">-->
                             <!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
@@ -33,7 +32,7 @@
                             <!--                                </span>-->
                             <div class="card-body">
                                 <a href="{% url 'post_view' slug=post.slug %}" class="title-link h4">
-                                    {{ post.title|upper }}
+                                    {{ post.title|lower|capfirst }}
                                 </a>
                                 <p class="card-text montserrat-card-text mt-3">{{ post.content|safe|truncatewords:18 }}.
                                 </p>
@@ -63,7 +62,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="shadow col-lg-3">
                 <div data-sticky data-margin-top="80" data-sticky-for="767"></div>
                 <div class="row">
                     <div class="col-4 p-1">
@@ -116,8 +115,8 @@
 
                     <a class="text-center text-dark mt-3" href="#">View all categories</a>
 
-                    <div class="col-12 mt-5 mb-5 montserrat-card-text">
-                        <div class="row g-2" style="height: 300px">
+                    <div class="col-12 mt-5 mb-2 montserrat-card-text">
+                        <div class="row g-2" style="min-height: auto">
                             <div class="col-6 col-lg-12 p-0">
                                 <div class="row g-2">
                                     <div><h4 class="montserrat-title_card h2">Recent post</h4></div>

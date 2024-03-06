@@ -18,7 +18,7 @@
                 <article>
                     <h1 class="text-center mb-5 poppins-bold article-title-design">{{ post.title }}</h1>
                     <div>
-                        <p class="poppins-regular post-design">{{ post.content|safe }}.</p>
+                        <p class="poppins-light post-design">{{ post.content|safe }}.</p>
                     </div>
                     <div class="mt-5 p-0">
                         <div class="row">
@@ -62,7 +62,7 @@
                                 <div class="img-hover p-1 rounded"
                                      style="background-size: cover; height: 40px; background-color: {{ category.color }} ">
 
-                                    <h1 style="font-size: small" class="rounded-3 text-dark text-center my-2">
+                                    <h1 style="font-size: small" class="rounded-3 text-dark text-center my-2 poppins-light">
                                         <i class="fa-solid fa-circle p-1 fa-xs" style="color: #000000;"></i>
                                         {{ category.title|upper }}
                                     </h1>
@@ -76,7 +76,7 @@
                     <div class="row g-2" style="height: 300px">
                         <div class="col-6 col-lg-12 p-0">
                             <div class="row g-2">
-                                <div><h4 class="montserrat-title_card h2">Recent post</h4></div>
+                                <div><h4 class="poppins-light h2">Recent post</h4></div>
                                 {% for post in posts %}
                                 <div class="col-12">
                                     <div class="row">
@@ -84,9 +84,9 @@
                                             <img class="img-fluid rounded" src="{{ post.image.url }}" alt="">
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="title-link">
-                                                <a class="title-link"
-                                                   href="{% url 'post_view' slug=post.slug %}">{{ post.title }}</a>
+                                            <h6>
+                                                <a class="title-link poppins-light"
+                                                   href="{% url 'post_view' slug=post.slug %}">{{ post.title|lower|capfirst }}</a>
                                             </h6>
                                         </div>
                                     </div>
