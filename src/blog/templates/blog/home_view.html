@@ -19,7 +19,7 @@
                         <!--                            Livestyle-->
                         <!--                        </span>-->
                         <a href="{% url 'post_view' slug=post.slug %}"
-                           class="h2 title-link text-white title-link-white">{{ post.title }}.</a>
+                           class="h2 title-link text-white title-link-white">{{ post.title|lower|capfirst }}.</a>
                         <p class="text-white mt-3">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
                         <div class="position-relative montserrat-card-text mt-3">
                             <div class="row">
@@ -51,7 +51,7 @@
                                 <!--                                    Chess-->
                                 <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_1.slug %}"
-                                   class="h5 title-link text-white title-link-white">{{post_1.title}}.</a>
+                                   class="h5 title-link text-white title-link-white">{{post_1.title|lower|capfirst}}.</a>
                                 <div class="position-relative montserrat-card-text mt-3">
                                     <span class="text-white h6 ms-3"> <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
                                     <span class="text-white" style="display: inline-block">
@@ -73,7 +73,7 @@
                                 <!--                                    Develop-->
                                 <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_2.slug %}"
-                                   class="h6 title-link text-white title-link-white">{{ post_2.title }}.</a>
+                                   class="h6 title-link text-white title-link-white">{{ post_2.title|lower|capfirst }}.</a>
                                 <div class="position-relative montserrat-card-text mt-3">
                                     <span class="text-white h6 ms-3">
                                         <a href="#" class="title-link-white">{{ post_2.author_or_default }}</a>
@@ -97,7 +97,7 @@
                                 <!--                                    Work-->
                                 <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_3.slug %}"
-                                   class="h6 title-link text-white title-link-white">{{ post_3.title }}.</a>
+                                   class="h6 title-link text-white title-link-white">{{ post_3.title|lower|capfirst }}.</a>
                                 <div class="position-relative montserrat-card-text mt-3">
                                     <span class="text-white h6 ms-3">
                                         <a href="#" class="title-link-white"> {{ post_3.author_or_default }} </a>

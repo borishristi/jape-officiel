@@ -65,3 +65,7 @@ def category_post_view(request, category):
 def about_view(request):
 
     return render(request, "blog/about_view.html")
+
+
+def contact_view(request):
+    return render(request, "blog/contact_view.html")
