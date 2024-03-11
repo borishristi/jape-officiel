@@ -61,3 +61,11 @@ class BlogPost(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('posts:home')
+
+
+class CommentsPost(models.Model):
+    comment = models.TextField()
+    post = models.ForeignKey(BlogPost, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False)
+    last_update = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now=True)
