@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import BlogPost, CategoryPost
+from blog.models import BlogPost, CategoryPost, CommentsPost
 
 
 def base_view(request):
@@ -34,10 +34,12 @@ def post_view(request, slug):
     categories_post = post.category.all()
     posts = BlogPost.objects.all().filter(published=True).exclude(slug=post.slug)
     categories = CategoryPost.objects.all()
+    comments = CommentsPost.objects.all().filter(post=post)
     print(post.slug)
     print(post.title)
 
-    context = {"post": post, "posts": posts[:4], "categories": categories[:6], "categories_post": categories_post}
+    context = {"post": post, "posts": posts[:4], "categories": categories[:6], "categories_post": categories_post,
+               "comments": comments}
 
     return render(request, "blog/post_view.html", context)
 
@@ -63,7 +65,6 @@ def category_post_view(request, category):
 
 
 def about_view(request):
-
     return render(request, "blog/about_view.html")
 
 

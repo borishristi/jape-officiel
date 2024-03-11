@@ -69,3 +69,7 @@ class CommentsPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False)
     last_update = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name = "Comment"
