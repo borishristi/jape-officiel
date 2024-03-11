@@ -2,12 +2,11 @@
 {% load static %}
 
 {% block title %}
-
 <title>{{ post.title }}</title>
-
 {% endblock %}
 
 {% block content %}
+
 
 <section class="container">
     <div class="col-12 mt-3 m-0 rounded">
@@ -38,14 +37,11 @@
                         <div class="col-12 ms-1">
                             <div class="row mt-2"></div>
                             {% for category_post in categories_post %}
-                            <a style="text-decoration: none" class="m-1 p-1"
-                               href="{%url 'category' category=category_post.cat_slug %}">
+                            <a style="text-decoration: none" class="m-1 p-1" href="{%url 'category' category=category_post.cat_slug %}">
                                 {% if category_post.color == '#0D6EFD' %}
-                                <span style="background-color: {{ category_post.color }}; color: darkred"
-                                      class="p-1 rounded-3">
+                                <span style="background-color: {{ category_post.color }}; color: darkred" class="p-1 rounded-3">
                                 {% else %}
-                                <span style="background-color: {{ category_post.color }};"
-                                      class="p-1 rounded-3 text-dark">
+                                <span style="background-color: {{ category_post.color }};" class="p-1 rounded-3 text-dark">
                                 {% endif %}
                                     <i class="fa-solid fa-circle p-1 pt-3 pb-3 fa-xs" style="color: #ffffff;"></i>
                                     {{ category_post.title }}
@@ -53,32 +49,6 @@
                             </a>
                             {% endfor %}
                         </div>
-                    </div>
-                    <div class="mt-3">
-                        <div class="row">
-                            <span class="h5 m-2">Commentaires</span>
-                            {% for comment in comments %}
-                            <div class="col-1">
-                                <img width="47px" class="rounded-circle"
-                                     src="{% static 'img/profil_app.jpg' %}"
-                                     alt="image profil">
-                            </div>
-                            <div class="col-11 mb-3">
-                                <div class="my-3">
-                                    <span class="h6 d-block">
-                                        <a href="#" class="title-link">{{ post.author_or_default }}</a>
-                                    </span>
-                                    <span class="" style="font-size: small"> Le {{ comment.created_on }}</span>
-                                </div>
-                                <div>
-                                    <span class="" style="font-size: small">
-                                        {{ comment.comment }}
-                                    </span>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-
                     </div>
                 </article>
             </div>
@@ -92,8 +62,7 @@
                                 <div class="img-hover p-1 rounded"
                                      style="background-size: cover; height: 40px; background-color: {{ category.color }} ">
 
-                                    <h1 style="font-size: small"
-                                        class="rounded-3 text-dark text-center my-2 poppins-light">
+                                    <h1 style="font-size: small" class="rounded-3 text-dark text-center my-2 poppins-light">
                                         <i class="fa-solid fa-circle p-1 fa-xs" style="color: #000000;"></i>
                                         {{ category.title|upper }}
                                     </h1>
@@ -117,8 +86,7 @@
                                         <div class="col-8">
                                             <h6>
                                                 <a class="title-link poppins-light"
-                                                   href="{% url 'post_view' slug=post.slug %}">
-                                                    {{ post.title|lower|capfirst }}</a>
+                                                   href="{% url 'post_view' slug=post.slug %}">{{ post.title|lower|capfirst }}</a>
                                             </h6>
                                         </div>
                                     </div>
@@ -139,5 +107,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
