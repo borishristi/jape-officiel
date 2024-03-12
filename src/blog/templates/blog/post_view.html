@@ -9,9 +9,9 @@
 
 {% block content %}
 
-<section class="container">
+<section class="container" style="min-height: 1550px">
     <div class="col-12 mt-3 m-0 rounded">
-        <img src="{{ post.image.url }}" alt="" class="w-100 rounded-3">
+        <img src="{{ post.image.url }}" alt="" class="w-100 rounded-3" style="max-height: 400px; background-size: cover">
     </div>
     <div class="col-12">
         <div class="row container m-0 mt-3 p-3">
@@ -82,7 +82,7 @@
                     </div>
                 </article>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3" style="height: auto">
                 <div class="col-12 m-2">
                     <h1 class="text-center mt-5 h2">Categories</h1>
                     <div class="row mt-3">
@@ -139,5 +139,6 @@
         </div>
     </div>
 </section>
+
 
 {% endblock %}

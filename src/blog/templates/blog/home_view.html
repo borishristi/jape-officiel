@@ -10,14 +10,11 @@
         <div class="row g-4">
             <div class="col-lg-6">
                 <div class="img-justify position-relative">
-                    <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                         src="{{ post.image.url }}" alt="">
+                    <a href="{% url 'post_view' slug=post.slug %}">
+                        <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
+                             src="{{ post.image.url }}" alt="">
+                    </a>
                     <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                        <!--                        <span style="font-size: medium; margin-top: -35px"-->
-                        <!--                              class="position-absolute bg-danger ps-2 pe-2 rounded-3 text-white">-->
-                        <!--                            <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
-                        <!--                            Livestyle-->
-                        <!--                        </span>-->
                         <a href="{% url 'post_view' slug=post.slug %}"
                            class="h2 title-link text-white title-link-white">{{ post.title|lower|capfirst }}.</a>
                         <p class="text-white mt-3">{{ post.content|safe|striptags|truncatewords:20 }}.</p>
@@ -42,8 +39,10 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="img-justify-second position-relative">
-                            <img style="height: 100%; filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{{ post_1.image.url }}" alt="">
+                            <a href="{% url 'post_view' slug=post_1.slug %}">
+                                <img style="height: 100%; filter: brightness(70%);" class="img-fluid img-img img-hover"
+                                     src="{{ post_1.image.url }}" alt="">
+                            </a>
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                                 <!--                                <span style="font-size: small; margin-top: -30px"-->
                                 <!--                                      class="position-absolute bg-info ps-2 pe-2 rounded-3 text-white">-->
@@ -53,7 +52,8 @@
                                 <a href="{% url 'post_view' slug=post_1.slug %}"
                                    class="h5 title-link text-white title-link-white">{{post_1.title|lower|capfirst}}.</a>
                                 <div class="position-relative montserrat-card-text mt-3">
-                                    <span class="text-white h6 ms-3"> <a href="#" class="title-link-white">{{post_1.author_or_default}}</a></span>
+                                    <span class="text-white h6 ms-3">
+                                        <a href="#" class="title-link-white">{{ post_1.author_or_default }}</a></span>
                                     <span class="text-white" style="display: inline-block">
                                         <i class="fa-solid fa-clock fa-xs ms-3" style="color: #0D6EFD"></i>
                                         {{ post_1.created_on }}
@@ -64,14 +64,11 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="img-justify-second position-relative">
-                            <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{{ post_2.image.url }}" alt="">
+                            <a href="{% url 'post_view' slug=post_2.slug %}">
+                                <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
+                                     src="{{ post_2.image.url }}" alt="">
+                            </a>
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
-                                <!--                                <span style="font-size: medium; margin-top: -35px"-->
-                                <!--                                      class="position-absolute bg-primary ps-2 pe-2 rounded-3 text-white">-->
-                                <!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
-                                <!--                                    Develop-->
-                                <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_2.slug %}"
                                    class="h6 title-link text-white title-link-white">{{ post_2.title|lower|capfirst }}.</a>
                                 <div class="position-relative montserrat-card-text mt-3">
@@ -88,8 +85,10 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="img-justify-second position-relative">
-                            <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
-                                 src="{{ post_3.image.url }}" alt="">
+                            <a href="{% url 'post_view' slug=post_3.slug %}">
+                                <img style="filter: brightness(70%);" class="img-fluid img-img img-hover"
+                                     src="{{ post_3.image.url }}" alt="">
+                            </a>
                             <div class="position-absolute start-0 bottom-0 mb-4 ms-5 me-5">
                                 <!--                                <span style="font-size: medium; margin-top: -35px"-->
                                 <!--                                      class="position-absolute bg-success ps-2 pe-2 rounded-3 text-white">-->
@@ -97,7 +96,8 @@
                                 <!--                                    Work-->
                                 <!--                                </span>-->
                                 <a href="{% url 'post_view' slug=post_3.slug %}"
-                                   class="h6 title-link text-white title-link-white">{{ post_3.title|lower|capfirst }}.</a>
+                                   class="h6 title-link text-white title-link-white">{{ post_3.title|lower|capfirst }}.
+                                </a>
                                 <div class="position-relative montserrat-card-text mt-3">
                                     <span class="text-white h6 ms-3">
                                         <a href="#" class="title-link-white"> {{ post_3.author_or_default }} </a>
@@ -120,7 +120,7 @@
 
 <!--START ARTICLES SECTION-->
 
-<section class="mt-3">
+<section class="mt-3" style="min-height: 1550px">
     <div class="container roboto-light">
         <div class="row">
             <div class="col-lg-9">
@@ -132,16 +132,16 @@
                     {% for post in posts %}
                     <div class="col-sm-6 py-2 pe-2 ps-2">
                         <div class="shadow card border-0 p-0" style="width: 100%; min-height: 450px">
-                            <img src="{{ post.image.url }}" style="height: 250px;"
-                                 class="img-hover rounded img-fluid card-img-top position-relative" alt="...">
-                            <!--                            <span style="font-size: small" class="position-absolute bg-danger px-1 pb-1 end-0 me-3 mt-3 rounded-3 text-white">-->
-                            <!--                                <i class="fa-solid fa-circle p-1 fa-xs" style="color: #ffffff;"></i>-->
-                            <!--                                Livestyle-->
-                            <!--                            </span>-->
+                            <a href="{% url 'post_view' slug=post.slug %}">
+                                <img src="{{ post.image.url }}" style="height: 250px;"
+                                     class="img-hover rounded img-fluid card-img-top position-relative" alt="...">
+                            </a>
                             <div class="card-body">
                                 <a href="{% url 'post_view' slug=post.slug %}" class="title-link montserrat-title_card">
-                                    <h5 class="card-title montserrat-title_card title-link h3">{{ post.title|lower|capfirst }}</h5></a>
-                                <p class="card-text montserrat-card-text mt-3">{{ post.content|safe|truncatewords:20 }}.</p>
+                                    <h5 class="card-title montserrat-title_card title-link h3">
+                                        {{ post.title|lower|capfirst }}</h5></a>
+                                <p class="card-text montserrat-card-text mt-3">{{ post.content|safe|truncatewords:20 }}.
+                                </p>
                                 <div class="mt-3">
                                     <div class="row">
                                         <div class="col-1">

@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<section class="mt-3">
+<section class="mt-3" style="min-height: 1250px">
     <div class="container roboto-light">
         <div class="row">
             <div class="col-lg-9 m-0">
@@ -23,11 +23,6 @@
                             <img src="{{ post.image.url }}"
                                  class="img-hover rounded img-fluid card-img-top position-relative"
                                  alt="...">
-<!--                            <span style="font-size: small"-->
-<!--                                  class="position-absolute bg-danger px-1 pb-1 end-0 me-3 mt-3 rounded-3 text-white">-->
-<!--                                    <i class="fa-solid fa-circle p-1 fa-xs" style="color: {{ category_post.color }};"></i>-->
-<!--                                    {{ category_post.title }}-->
-<!--                                </span>-->
                             <div class="card-body">
                                 <a href="{% url 'post_view' slug=post.slug %}" class="card-title montserrat-title_card title-link montserrat-title_card h3">
                                     {{ post.title }}

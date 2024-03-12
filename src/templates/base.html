@@ -55,14 +55,14 @@
                         <li><a class="dropdown-item m-2 poppins-light" href="#">Something else here</a></li>
                     </ul>
                 </li>
+<!--                <li class="nav-item m-2">-->
+<!--                    <a class="nav-link text-white title-link-nav poppins-light" href="#">Gallery</a>-->
+<!--                </li>-->
                 <li class="nav-item m-2">
-                    <a class="nav-link text-white title-link-nav poppins-light" href="#">Gallery</a>
+                    <a class="nav-link text-white title-link-nav poppins-light" href="{% url 'about_view' %}">A propos</a>
                 </li>
                 <li class="nav-item m-2">
-                    <a class="nav-link text-white title-link-nav poppins-light" href="{% url 'about_view' %}">A propos de nous</a>
-                </li>
-                <li class="nav-item m-2">
-                    <a class="nav-link text-white title-link-nav poppins-light" href="{% url 'contact_view' %}">Contact us</a>
+                    <a class="nav-link text-white title-link-nav poppins-light" href="{% url 'contact_view' %}">Contact</a>
                 </li>
             </ul>
             <form class="d-flex poppins-light">
@@ -136,7 +136,7 @@
                 JAPE-OFFICIEL
             </div>
             <div class="col-md-5 lead">
-                <p class="h6">
+                <p style="font-size: medium">
                     La jeunesse d'action protestante et évangélique est un mouvement de jeunesse chrétien qui vise à
                     encourager l'engagement et l'action sociale parmi les jeunes issus des traditions protestantes et
                     évangéliques. Ce mouvement propose des activités et des initiatives visant à promouvoir des valeurs
@@ -151,9 +151,9 @@
                         <label for="exampleInputEmail1"></label><input type="email" class="form-control"
                                                                        id="exampleInputEmail1"
                                                                        aria-describedby="emailHelp"
-                                                                       placeholder="Enter your email">
+                                                                       placeholder="Email ...">
                         <button type="submit" class="btn btn-light rounded-3 btn-outline-success mt-2">Envoyer</button>
-                        <div id="emailHelp" class="form-text"><p class="h6">Nous ne communiquerons jamais votre adresse électronique à qui que ce soit..</p></div>
+                        <div id="emailHelp" class="form-text"><p style="font-size: small">Nous ne communiquerons jamais votre adresse électronique à qui que ce soit..</p></div>
                     </div>
                 </form>
             </div>
