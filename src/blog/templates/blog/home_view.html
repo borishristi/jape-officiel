@@ -211,7 +211,6 @@
                             <a class="title-link" href="{% url 'category' category=category.cat_slug %}">
                                 <div class="img-hover p-1 rounded"
                                      style="background-size: cover; height: 40px; background-color: {{ category.color }} ">
-
                                     <h1 style="font-size: small" class="rounded-3 text-dark text-center my-2">
                                         <i class="fa-solid fa-circle p-1 fa-xs" style="color: #000000;"></i>
                                         {{ category.title|upper }}
@@ -225,7 +224,7 @@
 
                     <div class="col-12 mt-5 mb-2 montserrat-card-text">
                         <div class="row g-2" style="min-height: auto">
-                            <div class="col-6 col-lg-12">
+                            <div class="col-6 col-sm-12 col-lg-12">
                                 <div class="row g-2">
                                     <div><h4 class="montserrat-title_card h2">Recent post</h4></div>
                                     {% for r_post in r_posts %}
@@ -247,7 +246,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            <div class="col-6 col-lg-12 p-0">
+                            <div class="col-6 col-sm-12 col-lg-12 p-0">
                                 <div class="ps-1 pt-2">
                                     <img class="img-hover img-fluid w-100"
                                          src="{% static 'img/advertising.jpg' %}" alt="Avertising"
