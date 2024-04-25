@@ -25,6 +25,10 @@ def home_view(request):
     return render(request, "blog/home_view.html", context)
 
 
+def index_view(request):
+    return render(request, "blog/index.html")
+
+
 def image_view(request):
     return render(request, "blog/article_01.html")
 
