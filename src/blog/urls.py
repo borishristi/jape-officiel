@@ -4,11 +4,16 @@ from django.urls import path, include
 
 from jape_officiel import settings
 from .views import base_view, image_view, home_view, post_view, posts_view, category_post_view, about_view, contact_view
-from .views import index_view
+from .views import index_view, category2_view, contact2_view, single_view
 
 urlpatterns = [
-    path('', home_view, name="home_view"),
-    path('index/', index_view, name="index"),
+    path('', index_view, name="index"),
+    path('home/', home_view, name="home_view"),
+    path('category/', category2_view, name="categorie"),
+    path('contact/', contact2_view, name="contact"),
+    path('single/', single_view, name="single"),
+    # path('index/', index_view, name="index"),
+
     path('base/', base_view, name="base_view"),
     path('posts/', posts_view, name="posts_view"),
     path('about/', about_view, name="about_view"),

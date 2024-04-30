@@ -26,7 +26,37 @@ def home_view(request):
 
 
 def index_view(request):
-    return render(request, "blog/index.html")
+    # select the first post
+    i_post = BlogPost.objects.first()
+
+    # select the all published posts
+    i_posts = BlogPost.objects.all().filter(published=True)
+
+    # randomly select 4 posts from the database, starting with post 4
+    random_posts = BlogPost.objects.all().filter(published=True)[3:7]
+
+    categories = CategoryPost.objects.all()[1:5]
+
+    print(i_posts[0].title)
+    print(i_posts[2].title)
+    i_post_1 = i_posts[0]
+    i_post_2 = i_posts[1]
+    i_post_3 = i_posts[2]
+    context = {"post": i_post, "post_1": i_post_1, "post_2": i_post_2, "post_3": i_post_3, "posts": i_posts[4:10],
+               "r_posts": i_posts[:4], "categories": categories, "random_posts": random_posts}
+    return render(request, "blog/index.html", context)
+
+
+def category2_view(request):
+    return render(request, "blog/category.html")
+
+
+def contact2_view(request):
+    return render(request, "blog/contact.html")
+
+
+def single_view(request):
+    return render(request, "blog/single.html")
 
 
 def image_view(request):
