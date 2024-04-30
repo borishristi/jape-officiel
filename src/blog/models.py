@@ -36,6 +36,7 @@ class BlogPost(models.Model):
     published = models.BooleanField(default=False, verbose_name="Publié")
     image = models.ImageField(upload_to="images")
     content = models.TextField(blank=True, verbose_name='Contenu')
+    read_count = models.IntegerField(default=0, verbose_name='Nombre de lecture')
 
     class Meta:
         ordering = ['-created_on']
