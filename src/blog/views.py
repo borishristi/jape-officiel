@@ -34,6 +34,7 @@ def index_view(request):
 
     # randomly select 4 posts from the database, starting with post 4
     random_posts = BlogPost.objects.all().filter(published=True)[3:7]
+    featured_posts = BlogPost.objects.all().filter(published=True)[7:12]
 
     categories = CategoryPost.objects.all()[1:5]
 
@@ -43,7 +44,8 @@ def index_view(request):
     i_post_2 = i_posts[1]
     i_post_3 = i_posts[2]
     context = {"post": i_post, "post_1": i_post_1, "post_2": i_post_2, "post_3": i_post_3, "posts": i_posts[4:10],
-               "r_posts": i_posts[:4], "categories": categories, "random_posts": random_posts}
+               "r_posts": i_posts[:4], "categories": categories, "random_posts": random_posts,
+               "featured_posts": featured_posts}
     return render(request, "blog/index.html", context)
 
 
