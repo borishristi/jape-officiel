@@ -11,7 +11,7 @@ urlpatterns = [
     path('home/', home_view, name="home_view"),
     path('category/', category2_view, name="categorie"),
     path('contact/', contact2_view, name="contact"),
-    path('single/', single_view, name="single"),
+    path('single/<str:slug>', single_view, name="single"),
     # path('index/', index_view, name="index"),
 
     path('base/', base_view, name="base_view"),
