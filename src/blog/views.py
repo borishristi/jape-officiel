@@ -51,18 +51,6 @@ def index_view(request):
     category_posts_3 = BlogPost.objects.all().filter(published=True, category=cat_3)
     category_posts_4 = BlogPost.objects.all().filter(published=True, category=cat_4)
 
-    # print("*******" * 5)
-    # print(category_posts_1)
-    # print("*******" * 5)
-    # print(category_posts_2)
-    # print("*******" * 5)
-    # print(category_posts_3)
-    # print("*******" * 5)
-    # print(category_posts_4)
-
-    # print(i_posts[0].title)
-    # print(i_posts[2].title)
-
     i_post_1 = i_posts[0]
     i_post_2 = i_posts[1]
     i_post_3 = i_posts[2]
