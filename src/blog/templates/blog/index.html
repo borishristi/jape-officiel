@@ -120,7 +120,7 @@
                         <span class="px-1 text-white">/</span>
                         <a class="text-white" href="">{{ featured_post.created_on }}</a>
                     </div>
-                    <a class="h4 m-0 text-white" href="">{{ featured_post.title }}</a>
+                    <a class="h4 m-0 text-white" href="{% url 'single' slug=post.slug %}">{{ featured_post.title }}</a>
                 </div>
             </div>
             {% endfor %}
@@ -149,7 +149,7 @@
                                 <span class="px-1">/</span>
                                 <span>{{ category.created_on }}</span>
                             </div>
-                            <a class="h4 m-0" href="">{{ category.title }}</a>
+                            <a class="h4 m-0" href="{% url 'single' slug=category.slug %}">{{ category.title }}</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -170,7 +170,7 @@
                                 <span class="px-1">/</span>
                                 <span>{{ category.created_on }}</span>
                             </div>
-                            <a class="h4 m-0" href="">{{ category.title }}</a>
+                            <a class="h4 m-0" href="{% url 'single' slug=category.slug %}">{{ category.title }}</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -202,7 +202,7 @@
                                 <span class="px-1">/</span>
                                 <span>{{ category.created_on }}</span>
                             </div>
-                            <a class="h4 m-0" href="">{{ category.title }}</a>
+                            <a class="h4 m-0" href="{% url 'single' slug=category.slug %}">{{ category.title }}</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -223,7 +223,7 @@
                                 <span class="px-1">/</span>
                                 <span>{{ category.created_on }}</span>
                             </div>
-                            <a class="h4 m-0" href="">{{ category.title }}</a>
+                            <a class="h4 m-0" href="{% url 'single' slug=category.slug %}">{{ category.title }}</a>
                         </div>
                     </div>
                     {% endfor %}

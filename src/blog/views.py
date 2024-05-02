@@ -51,17 +51,17 @@ def index_view(request):
     category_posts_3 = BlogPost.objects.all().filter(published=True, category=cat_3)
     category_posts_4 = BlogPost.objects.all().filter(published=True, category=cat_4)
 
-    print("*******" * 5)
-    print(category_posts_1)
-    print("*******" * 5)
-    print(category_posts_2)
-    print("*******" * 5)
-    print(category_posts_3)
-    print("*******" * 5)
-    print(category_posts_4)
+    # print("*******" * 5)
+    # print(category_posts_1)
+    # print("*******" * 5)
+    # print(category_posts_2)
+    # print("*******" * 5)
+    # print(category_posts_3)
+    # print("*******" * 5)
+    # print(category_posts_4)
 
-    print(i_posts[0].title)
-    print(i_posts[2].title)
+    # print(i_posts[0].title)
+    # print(i_posts[2].title)
 
     i_post_1 = i_posts[0]
     i_post_2 = i_posts[1]
@@ -88,11 +88,24 @@ def single_view(request, slug):
     posts = BlogPost.objects.all().filter(published=True).exclude(slug=single_post.slug)
     categories = CategoryPost.objects.all()
     comments = CommentsPost.objects.all().filter(post=single_post)
-    print(single_post.slug)
-    print(single_post.title)
 
-    context = {"post": single_post, "posts": posts[:4], "categories": categories[:6],
-               "categories_post": categories_post,"comments": comments}
+    print("*******" * 5)
+    print(single_post.slug)
+    print("*******" * 5)
+    print(single_post.title)
+    print("*******" * 5)
+    print(comments)
+    print(comments)
+    i = 0
+    for comment in comments:
+        i += 1
+        print(comment.comment)
+
+    print("*******" * 5)
+    print(i)
+
+    context = {"post": single_post, "posts": posts[:4], "categories": categories[:6], "nombre_comment": i,
+               "categories_post": categories_post, "comments": comments}
     return render(request, "blog/single.html", context)
 
 
