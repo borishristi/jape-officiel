@@ -31,7 +31,7 @@ def index_view(request):
 
     # select the all published posts
     i_posts = BlogPost.objects.all().filter(published=True)
-    trending_posts = BlogPost.objects.all()[10:15]
+    trending_posts = BlogPost.objects.all()[10:1]
 
     # randomly select 4 posts from the database, starting with post 4
     random_posts = BlogPost.objects.all().filter(published=True)[3:7]
