@@ -13,3 +13,5 @@ framework:
 
 user: jape
 passwd: admin@jape
+
+git reset --hard HEAD
