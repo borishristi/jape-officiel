@@ -31,11 +31,31 @@ def index_view(request):
 
     # select the all published posts
     i_posts = BlogPost.objects.all().filter(published=True)
-    trending_posts = BlogPost.objects.all()[10:1]
+    trending_posts = BlogPost.objects.all()[10:15]
 
     # randomly select 4 posts from the database, starting with post 4
     random_posts = BlogPost.objects.all().filter(published=True)[3:7]
     featured_posts = BlogPost.objects.all().filter(published=True)[7:12]
+
+    # Popular Post
+    popular_posts = BlogPost.objects.filter(published=True).order_by("-read_count")
+    popular_posts_1 = BlogPost.objects.filter(published=True).order_by("-read_count")[2:4]
+    popular_posts_2 = BlogPost.objects.filter(published=True).order_by("-read_count")[4:6]
+    popular_post_1 = popular_posts[0]
+    popular_post_2 = popular_posts[1]
+
+    # Latest
+    latest_posts = BlogPost.objects.filter(published=True)
+    latest_posts_1 = latest_posts[2:4]
+    latest_posts_2 = latest_posts[4:6]
+    latest_post_1 = latest_posts[0]
+    print(latest_post_1.title)
+    latest_post_2 = latest_posts[1]
+    print(latest_post_2.title)
+
+    # for popular in popular_posts:
+    #     print("**" * 25)
+    #     print(popular.title, "Read count: ", popular.read_count)
 
     # category post select
     categories = CategoryPost.objects.all()
@@ -43,9 +63,9 @@ def index_view(request):
     cat_2 = categories[2]
     cat_3 = categories[3]
     cat_4 = categories[4]
-    print("***" * 15)
-    print(type(categories[3]))
-    print(categories[1])
+    # print("***" * 15)
+    # print(type(categories[3]))
+    # print(categories[1])
 
     # posts = BlogPost.objects.all().filter(published=True, category=category_post)
     # category_post = CategoryPost.objects.get(cat_slug=category)
@@ -62,7 +82,10 @@ def index_view(request):
                "r_posts": i_posts[:4], "categories": categories, "random_posts": random_posts,
                "featured_posts": featured_posts, "cat_1": cat_1, "cat_2": cat_2, "cat_3": cat_3, "cat_4": cat_4,
                "categories_1": category_posts_1[:3], "categories_2": category_posts_2, "categories_3": category_posts_3,
-               "categories_4": category_posts_4, "trending_posts": trending_posts}
+               "categories_4": category_posts_4, "trending_posts": trending_posts, "popular_posts": popular_posts,
+               "popular_post_1": popular_post_1, "popular_post_2": popular_post_2, "popular_posts_1": popular_posts_1,
+               "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
+               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2}
     return render(request, "blog/index.html", context)
 
 
@@ -81,17 +104,20 @@ def single_view(request, slug):
     categories = CategoryPost.objects.all()
     comments = CommentsPost.objects.all().filter(post=single_post)
 
-    print("*******" * 5)
-    print(single_post.slug)
-    print("*******" * 5)
-    print(single_post.title)
-    print("*******" * 5)
-    print(comments)
-    print(comments)
+    single_post.read_count += 1
+    single_post.save()
+
+    # print("*******" * 5)
+    # print(single_post.slug)
+    # print("*******" * 5)
+    # print(single_post.title)
+    # print("*******" * 5)
+    # print(comments)
+    # print(comments)
     i = 0
     for comment in comments:
         i += 1
-        print(comment.comment)
+        # print(comment.comment)
 
     print("*******" * 5)
     print(i)
