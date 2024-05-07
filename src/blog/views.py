@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 
 # Create your views here.
@@ -89,8 +90,32 @@ def index_view(request):
     return render(request, "blog/index.html", context)
 
 
-def category2_view(request):
-    return render(request, "blog/category.html")
+def category2_view(request, category):
+    category_post = CategoryPost.objects.get(cat_slug=category)
+    posts = BlogPost.objects.all().filter(published=True, category=category_post)[:4]
+    other_posts = BlogPost.objects.all().filter(published=True, category=category_post)[4:12]
+    # for post in posts:
+    #     print("*" * 25)
+    #     print(post.title)
+
+    # Pagination
+    other_posts = BlogPost.objects.all().filter(published=True, category=category_post)[4:105]
+    paginator = Paginator(other_posts, 5)
+    page = request.GET.get("page")
+    try:
+        p_posts = paginator.page(page)
+    except PageNotAnInteger:
+        p_posts = paginator.page(1)
+    except EmptyPage:
+        p_posts = paginator.page(paginator.num_pages)
+
+    # page_obj = paginator.get_page(page)
+    print("le nombre de page est :")
+    print(page)
+
+    context = {"posts": posts, "category_post": category_post, "other_posts": other_posts, "p_posts": p_posts,
+               "page": page}
+    return render(request, "blog/category.html", context)
 
 
 def contact2_view(request):
