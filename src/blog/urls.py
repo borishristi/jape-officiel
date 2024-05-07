@@ -9,7 +9,7 @@ from .views import index_view, category2_view, contact2_view, single_view
 urlpatterns = [
     path('', index_view, name="index"),
     path('home/', home_view, name="home_view"),
-    path('category/', category2_view, name="categorie"),
+    path('category/<str:category>/', category2_view, name="categorie"),
     path('contact/', contact2_view, name="contact"),
     path('single/<str:slug>', single_view, name="single"),
     # path('index/', index_view, name="index"),
