@@ -123,6 +123,10 @@ def contact2_view(request):
     return render(request, "blog/contact.html")
 
 
+def blog_view(request):
+    return render(request, "blog/blog.html")
+
+
 def single_view(request, slug):
     single_post = BlogPost.objects.get(slug=slug)
     categories_post = single_post.category.all()
