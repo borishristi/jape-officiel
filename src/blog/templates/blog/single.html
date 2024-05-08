@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-
+    <title>{{ post.title }}</title>
 {% endblock %}
 
 {% block content %}
@@ -29,6 +29,7 @@
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
                         <img class="img-fluid w-100" src="{{ post.image.url }}" style="object-fit: cover;">
+                        <h1 style="text-align: center">{{ post.title }}</h1>
                         <div class="overlay position-relative bg-light p-2 p-sm-4">
                             <div class="mb-3">
                                 <span class="px-1">Par</span><a href="">{{ post.author_or_default }}</a>

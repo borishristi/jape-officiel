@@ -55,6 +55,10 @@ class BlogPost(models.Model):
     def author_or_default(self):
         return f"{self.author.first_name} {self.author.last_name}" if self.author else "auteur inconnu"
 
+    @property
+    def category_post(self):
+        return self.category.title
+
     # @property
     # def category_post(self):
     #     category = self.category

@@ -93,14 +93,15 @@ def index_view(request):
 def category2_view(request, category):
     category_post = CategoryPost.objects.get(cat_slug=category)
     posts = BlogPost.objects.all().filter(published=True, category=category_post)[:4]
+    all_posts = BlogPost.objects.all().filter(published=True).exclude(category=category_post)[:5]
     other_posts = BlogPost.objects.all().filter(published=True, category=category_post)[4:12]
     # for post in posts:
     #     print("*" * 25)
     #     print(post.title)
 
     # Pagination
-    other_posts = BlogPost.objects.all().filter(published=True, category=category_post)[4:105]
-    paginator = Paginator(other_posts, 5)
+    other_posts = BlogPost.objects.all().filter(published=True)[4:105]
+    paginator = Paginator(other_posts, 6)
     page = request.GET.get("page")
     try:
         p_posts = paginator.page(page)
@@ -114,7 +115,7 @@ def category2_view(request, category):
     print(page)
 
     context = {"posts": posts, "category_post": category_post, "other_posts": other_posts, "p_posts": p_posts,
-               "page": page}
+               "page": page, "all_posts": all_posts}
     return render(request, "blog/category.html", context)
 
 
