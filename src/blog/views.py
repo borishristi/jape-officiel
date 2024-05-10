@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import BlogPost, CategoryPost, CommentsPost
+from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
 
 
 def base_view(request):
@@ -16,8 +16,8 @@ def home_view(request):
 
     categories = CategoryPost.objects.all()
 
-    print(posts[0].title)
-    print(posts[2].title)
+    # print(posts[0].title)
+    # print(posts[2].title)
     post_1 = posts[1]
     post_2 = posts[2]
     post_3 = posts[3]
@@ -54,6 +54,10 @@ def index_view(request):
     latest_post_2 = latest_posts[1]
     print(latest_post_2.title)
 
+    # Tags
+    tags = TagPost.objects.all()
+    print("**************************************")
+    print(tags)
     # for popular in popular_posts:
     #     print("**" * 25)
     #     print(popular.title, "Read count: ", popular.read_count)
@@ -86,7 +90,7 @@ def index_view(request):
                "categories_4": category_posts_4, "trending_posts": trending_posts, "popular_posts": popular_posts,
                "popular_post_1": popular_post_1, "popular_post_2": popular_post_2, "popular_posts_1": popular_posts_1,
                "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
-               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2}
+               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags}
     return render(request, "blog/index.html", context)
 
 
@@ -114,17 +118,70 @@ def category2_view(request, category):
     print("le nombre de page est :")
     print(page)
 
+    # Tags
+    tags = TagPost.objects.all()
+    categories = CategoryPost.objects.all()
+
     context = {"posts": posts, "category_post": category_post, "other_posts": other_posts, "p_posts": p_posts,
-               "page": page, "all_posts": all_posts}
+               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories}
     return render(request, "blog/category.html", context)
 
 
 def contact2_view(request):
-    return render(request, "blog/contact.html")
+    # Tags and categories
+    tags = TagPost.objects.all()
+    categories = CategoryPost.objects.all()
+    context = {"tags": tags, "categories": categories}
+    return render(request, "blog/contact.html", context)
 
 
 def blog_view(request):
-    return render(request, "blog/blog.html")
+    # select the first post
+    blog = BlogPost.objects.all()
+
+    # select the all published posts
+    i_posts = BlogPost.objects.all().filter(published=True)
+    trending_posts = BlogPost.objects.all()[10:15]
+
+    # randomly select 4 posts from the database, starting with post 4
+    random_posts = BlogPost.objects.all().filter(published=True)[3:7]
+
+    # Popular Post
+    popular_posts = BlogPost.objects.filter(published=True).order_by("-read_count")
+    popular_posts_1 = BlogPost.objects.filter(published=True).order_by("-read_count")[2:4]
+    popular_posts_2 = BlogPost.objects.filter(published=True).order_by("-read_count")[4:6]
+    popular_post_1 = popular_posts[0]
+    popular_post_2 = popular_posts[1]
+
+    # Latest
+    latest_posts = BlogPost.objects.filter(published=True)
+    latest_posts_1 = latest_posts[2:4]
+    latest_posts_2 = latest_posts[4:6]
+    latest_post_1 = latest_posts[0]
+    print(latest_post_1.title)
+    latest_post_2 = latest_posts[1]
+    print(latest_post_2.title)
+
+    # Tags
+    tags = TagPost.objects.all()
+    print("**************************************")
+    print(tags)
+
+    # category post select
+    categories = CategoryPost.objects.all()
+    cat_1 = categories[1]
+
+    i_post_1 = i_posts[0]
+    i_post_2 = i_posts[1]
+    i_post_3 = i_posts[2]
+    context = {"blog": blog, "post_1": i_post_1, "post_2": i_post_2, "post_3": i_post_3, "posts": i_posts[4:10],
+               "r_posts": i_posts[:4], "categories": categories, "random_posts": random_posts,
+               "cat_1": cat_1, "trending_posts": trending_posts,
+               "popular_posts": popular_posts,
+               "popular_post_1": popular_post_1, "popular_post_2": popular_post_2, "popular_posts_1": popular_posts_1,
+               "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
+               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags}
+    return render(request, "blog/blog.html", context)
 
 
 def single_view(request, slug):
@@ -136,6 +193,9 @@ def single_view(request, slug):
 
     single_post.read_count += 1
     single_post.save()
+
+    # Tags and categories
+    tags = TagPost.objects.all()
 
     # print("*******" * 5)
     # print(single_post.slug)
@@ -153,7 +213,7 @@ def single_view(request, slug):
     print(i)
 
     context = {"post": single_post, "posts": posts[:4], "categories": categories[:6], "nombre_comment": i,
-               "categories_post": categories_post, "comments": comments}
+               "categories_post": categories_post, "comments": comments, "tags": tags}
     return render(request, "blog/single.html", context)
 
 

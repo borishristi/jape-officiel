@@ -26,6 +26,23 @@ class CategoryPost(models.Model):
         super().save(*args, **kwargs)
 
 
+class TagPost(models.Model):
+    title = models.CharField(max_length=100, unique=True, verbose_name="Tag")
+    tag_slug = models.SlugField(max_length=100, blank=True, editable=True)
+
+    class Meta:
+        verbose_name = "Tag"
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.tag_slug:
+            self.tag_slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
+
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name='Titre')
     slug = models.SlugField(max_length=255, unique=True, blank=True)
@@ -33,6 +50,7 @@ class BlogPost(models.Model):
     last_update = models.DateTimeField(auto_now=True)
     created_on = models.DateField(blank=True, null=True)
     category = models.ManyToManyField(CategoryPost)
+    tag = models.ManyToManyField(TagPost)
     published = models.BooleanField(default=False, verbose_name="Publié")
     image = models.ImageField(upload_to="images")
     content = models.TextField(blank=True, verbose_name='Contenu')

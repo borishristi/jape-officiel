@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import BlogPost, CategoryPost, CommentsPost
+from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
 
 
 # Register your models here.
@@ -19,3 +19,8 @@ class CategoryPostAdmin(admin.ModelAdmin):
 @admin.register(CommentsPost)
 class CommentsPostAdmin(admin.ModelAdmin):
     list_display = ("comment", "author", "created_on", "last_update", "post", )
+
+
+@admin.register(TagPost)
+class TagPostAdmin(admin.ModelAdmin):
+    list_display = ("title", "tag_slug", )
