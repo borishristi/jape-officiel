@@ -111,8 +111,8 @@
 <div class="container-fluid py-3">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-            <h3 class="m-0">Featured</h3>
-            <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+            <h3 class="m-0">En Vedette</h3>
+            <a class="text-secondary font-weight-medium text-decoration-none" href="{% url 'blog' %}">Voir Tous</a>
         </div>
         <div class="owl-carousel owl-carousel-2 carousel-item-4 position-relative">
             {% for featured_post in featured_posts %}
@@ -480,18 +480,9 @@
                     <h3 class="m-0">Tags</h3>
                 </div>
                 <div class="d-flex flex-wrap m-n1">
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Sports</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Technology</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Entertainment</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">Lifestyle</a>
+                    {% for tag in tags %}
+                        <a href="{% url 'categorie' category=tag.tag_slug %}" class="btn btn-sm btn-outline-secondary m-1">{{ tag.title }}</a>
+                    {% endfor %}
                 </div>
             </div>
             <!-- Tags End -->
