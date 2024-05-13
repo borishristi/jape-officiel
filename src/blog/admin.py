@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
+from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost, ContactForm
 
 
 # Register your models here.
@@ -24,3 +24,8 @@ class CommentsPostAdmin(admin.ModelAdmin):
 @admin.register(TagPost)
 class TagPostAdmin(admin.ModelAdmin):
     list_display = ("title", "tag_slug", )
+
+
+@admin.register(ContactForm)
+class ContactFormAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "subject", "message")

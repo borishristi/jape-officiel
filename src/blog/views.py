@@ -1,8 +1,10 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
 from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
+from blog.forms import ContactUsForm
 
 
 def base_view(request):
@@ -131,7 +133,20 @@ def contact2_view(request):
     # Tags and categories
     tags = TagPost.objects.all()
     categories = CategoryPost.objects.all()
-    context = {"tags": tags, "categories": categories}
+
+    # Formulaire
+    if request.method == "POST":
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            return HttpResponseRedirect(request.path)
+
+    else:
+        form = ContactUsForm()
+
+    context = {"tags": tags, "categories": categories, "form": form}
+
     return render(request, "blog/contact.html", context)
 
 
