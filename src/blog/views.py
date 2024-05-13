@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
+from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost, ContactForm
 from blog.forms import ContactUsForm
 
 
@@ -130,22 +130,47 @@ def category2_view(request, category):
 
 
 def contact2_view(request):
+    # print("*" * 50)
     # Tags and categories
     tags = TagPost.objects.all()
     categories = CategoryPost.objects.all()
+    # print(f"La méthode d'envoie utilisée est: {request.method}")
+    # print("*" * 50)
 
     # Formulaire
-    if request.method == "POST":
-        form = ContactUsForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
-            return HttpResponseRedirect(request.path)
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+        cgu = request.POST.get("cgu")
+
+        print("*" * 100)
+        print("Affichage des données récupérées")
+        print(f"Le nom est : {name}")
+        print(f"L'email est : {email}")
+        print(f"Le sujet est : {subject}")
+        print(f"Le message est : {message}")
+        print(f"Le cgu est : {cgu}")
+    return HttpResponseRedirect(request.path)
+
+    form = ContactForm()
+    form.name = name
+    form.email = email
+    form.subject = subject
+    form.message = message
+
+    form.save()
+
+    if form.is_valid():
+        print(form.cleaned_data)
+        form.save()
+        return HttpResponseRedirect(request.path)
 
     else:
         form = ContactUsForm()
 
-    context = {"tags": tags, "categories": categories, "form": form}
+    context = {"tags": tags, "categories": categories}
 
     return render(request, "blog/contact.html", context)
 
