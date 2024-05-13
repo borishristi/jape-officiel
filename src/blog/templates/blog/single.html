@@ -33,11 +33,11 @@
                         <div class="overlay position-relative bg-light p-2 p-sm-4">
                             <div class="mb-3">
                                 <span class="px-1">Par</span><a href="">{{ post.author_or_default }}</a>
-                                <span class="px-1">/</span>
-                                <span>{{ post.created_on }}</span>
+                                <span class="px-1">| mis à jour le</span>
+                                <span><strong>{{ post.last_update|date:"l d M Y" }}</strong></span>
                             </div>
                             <div>
-                                {{ post.content|safe}}
+                                {{ post.content|safe }}
                             </div>
                         </div>
                     </div>
