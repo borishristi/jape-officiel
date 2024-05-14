@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -167,6 +168,16 @@ def contact2_view(request):
             notification = "<span class='text-danger'>L'email est déjà dans la base de donnée</span>"
         else:
             notification = "<span class='text-success'>Enregistrement effectué avec success</span>"
+
+            # Send mail
+            subject = f"Message de {form.name}"
+            body = f"""
+                Name: {form.name}
+                Email: {form.email}
+                Subject: {form.subject}
+                Message: {form.message}
+            """
+            send_mail(subject, body, form.email, ['japeofficiel@gmail.com'])
             form.save()
             form.clean()
 
