@@ -96,3 +96,14 @@ class CommentsPost(models.Model):
     class Meta:
         ordering = ['-created_on']
         verbose_name = "Comment"
+
+
+class ContactForm(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    cgu_accept = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Contact"

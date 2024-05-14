@@ -1,8 +1,11 @@
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost
+from blog.forms import ContactUsForm
+from blog.models import BlogPost, CategoryPost, CommentsPost, TagPost, ContactForm
 
 
 def base_view(request):
@@ -131,7 +134,55 @@ def contact2_view(request):
     # Tags and categories
     tags = TagPost.objects.all()
     categories = CategoryPost.objects.all()
-    context = {"tags": tags, "categories": categories}
+    notification = ""
+
+    # Formulaire
+    if request.method == 'POST':
+        # form = ContactUsForm(request.POST)
+        print("_" * 50)
+        print(f"La méthode d'envoie est : {request.method}")
+        print("_" * 50)
+
+        # Récupération des données
+        form = ContactForm()
+        form.name = request.POST.get("name")
+        form.email = request.POST.get("email")
+        form.subject = request.POST.get("subject")
+        form.message = request.POST.get("message")
+        cgu_accept = request.POST.get("cgu_accept")
+
+        # print("*" * 100)
+        # print("Affichage des données récupérées")
+        # print(f"Le nom est : {form.name}")
+        # print(f"L'email est : {form.email}")
+        # print(f"Le sujet est : {form.subject}")
+        # print(f"Le message est : {form.message}")
+        # print(f"Le cgu est : {form.cgu_accept}")
+
+        # Vérification des emails dans la base de données
+        list_contacts = ContactForm.objects.all()
+        my_list_contacts = []
+        for contact in list_contacts:
+            my_list_contacts.append(contact.email)
+        if form.email in my_list_contacts:
+            notification = "<span class='text-danger'>L'email est déjà dans la base de donnée</span>"
+        else:
+            notification = "<span class='text-success'>Enregistrement effectué avec success</span>"
+
+            # Send mail
+            subject = f"Message de {form.name}"
+            body = f"""
+                Name: {form.name}
+                Email: {form.email}
+                Subject: {form.subject}
+                Message: {form.message}
+            """
+            send_mail(subject, body, form.email, ['japeofficiel@gmail.com'])
+            form.save()
+            form.clean()
+
+    context = {"tags": tags, "categories": categories, "notification": notification}
+
     return render(request, "blog/contact.html", context)
 
 
