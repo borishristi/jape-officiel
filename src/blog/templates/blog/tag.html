@@ -172,7 +172,7 @@
                     </div>
                     <div class="d-flex flex-wrap m-n1">
                     {% for tag in tags %}
-                        <a href="{% url 'tag' tag=tag.tag_slug %}" class="btn btn-sm btn-outline-secondary m-1">{{ tag.tag_slug }}</a>
+                        <a href="{% url 'categorie' category=tag.tag_slug %}" class="btn btn-sm btn-outline-secondary m-1">{{ tag.title }}</a>
                     {% endfor %}
                     </div>
                 </div>

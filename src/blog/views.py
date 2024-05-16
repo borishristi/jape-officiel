@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+
+User = get_user_model()
 
 # Create your views here.
 from blog.forms import ContactUsForm
@@ -95,6 +98,46 @@ def index_view(request):
                "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
                "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags}
     return render(request, "blog/index.html", context)
+
+
+def tag_view(request, tag):
+    tag_post = TagPost.objects.get(tag_slug=tag)
+    # print("_"*50)
+    # print(f"Le tag post est : {tag_post} et l'id est {tag_post.id} et le tag est {tag_post.tag_slug}")
+    # print("_"*100)
+    # for post in tag_post:
+    #     print("*" * 25)
+    #     print(post.title)
+    posts = BlogPost.objects.all().filter(published=True, tag=tag_post)[:4]
+    all_posts = BlogPost.objects.all().filter(published=True).exclude(tag=tag_post)[:5]
+    other_posts = BlogPost.objects.all().filter(published=True, tag=tag_post)[4:12]
+    for post in posts:
+        print("*" * 25)
+        print(f"Le titre du post est : {post.title}")
+        print("*" * 25)
+
+    # Pagination
+    other_posts = BlogPost.objects.all().filter(published=True)[4:105]
+    paginator = Paginator(other_posts, 6)
+    page = request.GET.get("page")
+    try:
+        p_posts = paginator.page(page)
+    except PageNotAnInteger:
+        p_posts = paginator.page(1)
+    except EmptyPage:
+        p_posts = paginator.page(paginator.num_pages)
+
+    # page_obj = paginator.get_page(page)
+    print("le nombre de page est :")
+    print(page)
+
+    # Tags
+    tags = TagPost.objects.all()
+    categories = CategoryPost.objects.all()
+
+    context = {"posts": posts, "category_post": tag_post, "other_posts": other_posts, "p_posts": p_posts,
+               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories}
+    return render(request, "blog/tag.html", context)
 
 
 def category2_view(request, category):
@@ -240,32 +283,55 @@ def single_view(request, slug):
     categories_post = single_post.category.all()
     posts = BlogPost.objects.all().filter(published=True).exclude(slug=single_post.slug)
     categories = CategoryPost.objects.all()
-    comments = CommentsPost.objects.all().filter(post=single_post)
+    comments = CommentsPost.objects.all().filter(post=single_post.id)
+
+    # Enregistrement d'un commentaire'
+    if request.method == "POST":
+        comment = CommentsPost()
+        comment.post = single_post
+        comment.author = request.user
+        print(f"l'utilisateur est : {request.user.id}")
+
+        comment.comment = request.POST.get("message")
+        print("*"*50)
+        print(f"Impression du commentaire: {request.POST.get('message')}")
+        print(comment.comment)
+        print(comment.author)
+        print(comment.post)
+
+        comment.save()
 
     single_post.read_count += 1
     single_post.save()
 
     # Tags and categories
     tags = TagPost.objects.all()
+    post_tags = single_post.tag.all()
+    for post_tag in post_tags:
+        print(post_tag.title)
 
-    # print("*******" * 5)
-    # print(single_post.slug)
-    # print("*******" * 5)
-    # print(single_post.title)
-    # print("*******" * 5)
-    # print(comments)
-    # print(comments)
     i = 0
     for comment in comments:
         i += 1
-        # print(comment.comment)
 
     print("*******" * 5)
     print(i)
 
     context = {"post": single_post, "posts": posts[:4], "categories": categories[:6], "nombre_comment": i,
-               "categories_post": categories_post, "comments": comments, "tags": tags}
+               "categories_post": categories_post, "comments": comments, "tags": tags, "post_tags": post_tags}
     return render(request, "blog/single.html", context)
+
+
+def save_comment(request):
+    # Enregistrement d'un commentaire'
+    print("Test de save_contact")
+    if request.method == "POST":
+        comment = CommentsPost()
+        comment.comment = request.POST.get("comment")
+        print(comment.comment)
+        # comment.comment = request.POST.get("post")
+        # comment.comment = request.POST.get("comment")
+        # comment.comment = request.POST.get("comment")
 
 
 def image_view(request):
