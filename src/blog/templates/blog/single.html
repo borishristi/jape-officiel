@@ -2,243 +2,261 @@
 {% load static %}
 
 {% block title %}
-    <title>{{ post.title }}</title>
+<title>{{ post.title }}</title>
 {% endblock %}
 
 {% block content %}
 
-    <!-- Breadcrumb Start -->
-    <div class="container-fluid p-0 m-0">
-        <div class="container">
-            <nav class="breadcrumb bg-transparent m-0 p-0">
-                <a class="breadcrumb-item" href="{% url 'index' %}">Home</a>
-                <a class="breadcrumb-item" href="#">Categorie</a>
-                <a class="breadcrumb-item" href="#">Technology</a>
-                <span class="breadcrumb-item active">{{ post.title }}</span>
-            </nav>
-        </div>
+<!-- Breadcrumb Start -->
+<div class="container-fluid p-0 m-0">
+    <div class="container">
+        <nav class="breadcrumb bg-transparent m-0 p-0">
+            <a class="breadcrumb-item" href="{% url 'index' %}">Home</a>
+            <a class="breadcrumb-item" href="#">Categorie</a>
+            <a class="breadcrumb-item" href="#">Technology</a>
+            <span class="breadcrumb-item active">{{ post.title }}</span>
+        </nav>
     </div>
-    <!-- Breadcrumb End -->
+</div>
+<!-- Breadcrumb End -->
 
 
-    <!-- News With Sidebar Start -->
-    <div class="container-fluid py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 m-0 p-0">
-                    <!-- News Detail Start -->
-                    <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="{{ post.image.url }}" style="object-fit: cover;">
-                        <h1 style="text-align: center">{{ post.title }}</h1>
-                        <div class="overlay position-relative bg-light p-2 p-sm-4">
-                            <div class="mb-3">
-                                <span class="px-1">Par</span><a href="">{{ post.author_or_default }}</a>
+<!-- News With Sidebar Start -->
+<div class="container-fluid py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 m-0 p-0">
+                <!-- News Detail Start -->
+                <div class="position-relative mb-3">
+                    <img class="img-fluid w-100" src="{{ post.image.url }}" style="object-fit: cover;">
+                    <h1 style="text-align: center">{{ post.title }}</h1>
+                    <div class="overlay position-relative bg-light p-2 p-sm-4">
+                        <div class="mb-3">
+                            <span class="px-1">Par</span><a href="">{{ post.author_or_default }}</a>
+                            <span class="px-1">/</span>
+                            <span>{{ post.created_on }}</span>
+                        </div>
+                        <div>
+                            {{ post.content|safe}}
+                        </div>
+                        <hr>
+                        <div class="mb-5">
+                            <h4 class="font-weight-bold mb-4">Tags</h4>
+                            <div class="d-flex flex-wrap m-n1">
+                                {% for tag in post_tags %}
+                                <a href="{% url 'tag' tag=tag.tag_slug %}"
+                                   class="btn btn-sm btn-outline-secondary m-1">{{ tag.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- News Detail End -->
+
+                <!-- Comment List Start -->
+                <div class="bg-light mb-3" style="padding: 30px;">
+                    <h3 class="mb-4">{{ nombre_comment }} Comments</h3>
+                    {% if comments %}
+                    {% for comment in comments %}
+                    <div class="media mb-4">
+                        <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid mr-3 mt-1"
+                             style="width: 45px;">
+                        <div class="media-body">
+                            <h6><a href="">{{ post.author_or_default }}</a> <small> | <i>le {{ comment.created_on }}</i></small>
+                            </h6>
+                            <p>{{ comment.comment }}</p>
+                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <span>Aucun commentaire</span>
+                    {% endif %}
+                </div>
+                <!-- Comment List End -->
+
+                <!-- Comment Form Start -->
+                <div class="bg-light mb-3" style="padding: 30px;">
+                    <h3 class="mb-4">Laissez un commentaire</h3>
+                    <form method="POST" action="{% url 'single' slug=post.slug %}" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea name="message" id="message" cols="30" rows="5" class="form-control">
+
+                                </textarea>
+                        </div>
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Laissez un commentaire"
+                                   class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Form End -->
+            </div>
+
+            <div class="col-lg-4 pt-3 pt-lg-0">
+                <!-- Social Follow Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Follow Us</h3>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                           style="background: #39569E;">
+                            <small class="fab fa-facebook-f mr-2"></small><small>12,345 Fans</small>
+                        </a>
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                           style="background: #52AAF4;">
+                            <small class="fab fa-twitter mr-2"></small><small>12,345 Followers</small>
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                           style="background: #0185AE;">
+                            <small class="fab fa-linkedin-in mr-2"></small><small>12,345 Connects</small>
+                        </a>
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                           style="background: #C8359D;">
+                            <small class="fab fa-instagram mr-2"></small><small>12,345 Followers</small>
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                           style="background: #DC472E;">
+                            <small class="fab fa-youtube mr-2"></small><small>12,345 Subscribers</small>
+                        </a>
+                        <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                           style="background: #1AB7EA;">
+                            <small class="fab fa-vimeo-v mr-2"></small><small>12,345 Followers</small>
+                        </a>
+                    </div>
+                </div>
+                <!-- Social Follow End -->
+
+                <!-- Newsletter Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Newsletter</h3>
+                    </div>
+                    <div class="bg-light text-center p-4 mb-3">
+                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                        <div class="input-group" style="width: 100%;">
+                            <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </div>
+                        <small>Sit eirmod nonumy kasd eirmod</small>
+                    </div>
+                </div>
+                <!-- Newsletter End -->
+
+                <!-- Ads Start -->
+                <div class="mb-3 pb-3">
+                    <a href=""><img class="img-fluid" src="{% static 'img/news-500x280-4.jpg' %}" alt=""></a>
+                </div>
+                <!-- Ads End -->
+
+                <!-- Popular News Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Tranding</h3>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img src="{% static 'img/news-100x100-1.jpg' %}"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3"
+                             style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">Technology</a>
                                 <span class="px-1">/</span>
-                                <span>{{ post.created_on }}</span>
+                                <span>January 01, 2045</span>
                             </div>
-                            <div>
-                                {{ post.content|safe}}
-                            </div>
+                            <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
                         </div>
                     </div>
-                    <!-- News Detail End -->
-
-                    <!-- Comment List Start -->
-                    <div class="bg-light mb-3" style="padding: 30px;">
-                        <h3 class="mb-4">{{ nombre_comment }} Comments</h3>
-                        {% if comments %}
-                            {% for comment in comments %}
-                            <div class="media mb-4">
-                                <img src="{% static 'img/user.jpg' %}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                <div class="media-body">
-                                    <h6><a href="">{{ post.author_or_default }}</a> <small> | <i>le {{ comment.created_on }}</i></small></h6>
-                                    <p>{{ comment.comment }}</p>
-                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                </div>
+                    <div class="d-flex mb-3">
+                        <img src="{% static 'img/news-100x100-2.jpg' %}"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3"
+                             style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">Technology</a>
+                                <span class="px-1">/</span>
+                                <span>January 01, 2045</span>
                             </div>
-                            {% endfor %}
-                        {% else %}
-                            <span>Aucun commentaire</span>
-                        {% endif %}
+                            <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                        </div>
                     </div>
-                    <!-- Comment List End -->
-
-                    <!-- Comment Form Start -->
-                    <div class="bg-light mb-3" style="padding: 30px;">
-                        <h3 class="mb-4">Leave a comment</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" class="form-control" id="name">
+                    <div class="d-flex mb-3">
+                        <img src="{% static 'img/news-100x100-3.jpg' %}"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3"
+                             style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">Technology</a>
+                                <span class="px-1">/</span>
+                                <span>January 01, 2045</span>
                             </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control" id="website">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group mb-0">
-                                <input type="submit" value="Leave a comment"
-                                    class="btn btn-primary font-weight-semi-bold py-2 px-3">
-                            </div>
-                        </form>
+                            <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                        </div>
                     </div>
-                    <!-- Comment Form End -->
+                    <div class="d-flex mb-3">
+                        <img src="{% static 'img/news-100x100-4.jpg' %}"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3"
+                             style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">Technology</a>
+                                <span class="px-1">/</span>
+                                <span>January 01, 2045</span>
+                            </div>
+                            <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img src="{% static 'img/news-100x100-5.jpg' %}"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3"
+                             style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">Technology</a>
+                                <span class="px-1">/</span>
+                                <span>January 01, 2045</span>
+                            </div>
+                            <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                        </div>
+                    </div>
                 </div>
+                <!-- Popular News End -->
 
-                <div class="col-lg-4 pt-3 pt-lg-0">
-                    <!-- Social Follow Start -->
-                    <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Follow Us</h3>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #39569E;">
-                                <small class="fab fa-facebook-f mr-2"></small><small>12,345 Fans</small>
-                            </a>
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #52AAF4;">
-                                <small class="fab fa-twitter mr-2"></small><small>12,345 Followers</small>
-                            </a>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #0185AE;">
-                                <small class="fab fa-linkedin-in mr-2"></small><small>12,345 Connects</small>
-                            </a>
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #C8359D;">
-                                <small class="fab fa-instagram mr-2"></small><small>12,345 Followers</small>
-                            </a>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #DC472E;">
-                                <small class="fab fa-youtube mr-2"></small><small>12,345 Subscribers</small>
-                            </a>
-                            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #1AB7EA;">
-                                <small class="fab fa-vimeo-v mr-2"></small><small>12,345 Followers</small>
-                            </a>
-                        </div>
+                <!-- Tags Start -->
+                <div class="pb-3">
+                    <div class="bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Tags</h3>
                     </div>
-                    <!-- Social Follow End -->
-
-                    <!-- Newsletter Start -->
-                    <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Newsletter</h3>
-                        </div>
-                        <div class="bg-light text-center p-4 mb-3">
-                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                            <div class="input-group" style="width: 100%;">
-                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary">Sign Up</button>
-                                </div>
-                            </div>
-                            <small>Sit eirmod nonumy kasd eirmod</small>
-                        </div>
+                    <div class="d-flex flex-wrap m-n1">
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Sports</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Technology</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Entertainment</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary m-1">Lifestyle</a>
                     </div>
-                    <!-- Newsletter End -->
-
-                    <!-- Ads Start -->
-                    <div class="mb-3 pb-3">
-                        <a href=""><img class="img-fluid" src="{% static 'img/news-500x280-4.jpg' %}" alt=""></a>
-                    </div>
-                    <!-- Ads End -->
-
-                    <!-- Popular News Start -->
-                    <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Tranding</h3>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="{% static 'img/news-100x100-1.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="{% static 'img/news-100x100-2.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="{% static 'img/news-100x100-3.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="{% static 'img/news-100x100-4.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="{% static 'img/news-100x100-5.jpg' %}" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Popular News End -->
-
-                    <!-- Tags Start -->
-                    <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Tags</h3>
-                        </div>
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Sports</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Technology</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Entertainment</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                            <a href="" class="btn btn-sm btn-outline-secondary m-1">Lifestyle</a>
-                        </div>
-                    </div>
-                    <!-- Tags End -->
                 </div>
+                <!-- Tags End -->
             </div>
         </div>
     </div>
-    </div>
-    <!-- News With Sidebar End -->
+</div>
+</div>
+<!-- News With Sidebar End -->
 
 {% endblock %}
