@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from datetime import datetime
 
 User = get_user_model()
 
@@ -35,6 +36,9 @@ def home_view(request):
 def index_view(request):
     # select the first post
     i_post = BlogPost.objects.first()
+
+    # Gestion des dates
+    site_date_time = datetime.now()
 
     # select the all published posts
     i_posts = BlogPost.objects.all().filter(published=True)
@@ -96,11 +100,15 @@ def index_view(request):
                "categories_4": category_posts_4, "trending_posts": trending_posts, "popular_posts": popular_posts,
                "popular_post_1": popular_post_1, "popular_post_2": popular_post_2, "popular_posts_1": popular_posts_1,
                "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
-               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags}
+               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags,
+               "site_date_time": site_date_time}
     return render(request, "blog/index.html", context)
 
 
 def tag_view(request, tag):
+    # Gestion des dates
+    site_date_time = datetime.now()
+
     tag_post = TagPost.objects.get(tag_slug=tag)
     # print("_"*50)
     # print(f"Le tag post est : {tag_post} et l'id est {tag_post.id} et le tag est {tag_post.tag_slug}")
@@ -136,7 +144,8 @@ def tag_view(request, tag):
     categories = CategoryPost.objects.all()
 
     context = {"posts": posts, "category_post": tag_post, "other_posts": other_posts, "p_posts": p_posts,
-               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories}
+               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories,
+               "site_date_time": site_date_time}
     return render(request, "blog/tag.html", context)
 
 
@@ -148,6 +157,9 @@ def category2_view(request, category):
     # for post in posts:
     #     print("*" * 25)
     #     print(post.title)
+
+    # Gestion des dates
+    site_date_time = datetime.now()
 
     # Pagination
     other_posts = BlogPost.objects.all().filter(published=True)[4:105]
@@ -169,7 +181,8 @@ def category2_view(request, category):
     categories = CategoryPost.objects.all()
 
     context = {"posts": posts, "category_post": category_post, "other_posts": other_posts, "p_posts": p_posts,
-               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories}
+               "page": page, "all_posts": all_posts, "tags": tags, "categories": categories,
+               "site_date_time": site_date_time}
     return render(request, "blog/category.html", context)
 
 
@@ -178,6 +191,9 @@ def contact2_view(request):
     tags = TagPost.objects.all()
     categories = CategoryPost.objects.all()
     notification = ""
+
+    # Gestion des dates
+    site_date_time = datetime.now()
 
     # Formulaire
     if request.method == 'POST':
@@ -224,7 +240,7 @@ def contact2_view(request):
             form.save()
             form.clean()
 
-    context = {"tags": tags, "categories": categories, "notification": notification}
+    context = {"tags": tags, "categories": categories, "notification": notification, "site_date_time": site_date_time}
 
     return render(request, "blog/contact.html", context)
 
@@ -232,6 +248,9 @@ def contact2_view(request):
 def blog_view(request):
     # select the first post
     blog = BlogPost.objects.all()
+
+    # Gestion des dates
+    site_date_time = datetime.now()
 
     # select the all published posts
     i_posts = BlogPost.objects.all().filter(published=True)
@@ -274,7 +293,8 @@ def blog_view(request):
                "popular_posts": popular_posts,
                "popular_post_1": popular_post_1, "popular_post_2": popular_post_2, "popular_posts_1": popular_posts_1,
                "popular_posts_2": popular_posts_2, "latest_posts_1": latest_posts_1, "latest_posts_2": latest_posts_2,
-               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags}
+               "latest_post_1": latest_post_1, "latest_post_2": latest_post_2, "tags": tags,
+               "site_date_time": site_date_time}
     return render(request, "blog/blog.html", context)
 
 
@@ -285,6 +305,9 @@ def single_view(request, slug):
     categories = CategoryPost.objects.all()
     comments = CommentsPost.objects.all().filter(post=single_post.id)
 
+    # Gestion des dates
+    site_date_time = datetime.now()
+
     # Enregistrement d'un commentaire'
     if request.method == "POST":
         comment = CommentsPost()
@@ -293,7 +316,7 @@ def single_view(request, slug):
         print(f"l'utilisateur est : {request.user.id}")
 
         comment.comment = request.POST.get("message")
-        print("*"*50)
+        print("*" * 50)
         print(f"Impression du commentaire: {request.POST.get('message')}")
         print(comment.comment)
         print(comment.author)
@@ -317,21 +340,10 @@ def single_view(request, slug):
     print("*******" * 5)
     print(i)
 
-    context = {"post": single_post, "posts": posts[:4], "categories": categories[:6], "nombre_comment": i,
-               "categories_post": categories_post, "comments": comments, "tags": tags, "post_tags": post_tags}
+    context = {"post": single_post, "posts": posts[:5], "categories": categories[:6], "nombre_comment": i,
+               "categories_post": categories_post, "comments": comments, "tags": tags, "post_tags": post_tags,
+               "site_date_time": site_date_time}
     return render(request, "blog/single.html", context)
-
-
-def save_comment(request):
-    # Enregistrement d'un commentaire'
-    print("Test de save_contact")
-    if request.method == "POST":
-        comment = CommentsPost()
-        comment.comment = request.POST.get("comment")
-        print(comment.comment)
-        # comment.comment = request.POST.get("post")
-        # comment.comment = request.POST.get("comment")
-        # comment.comment = request.POST.get("comment")
 
 
 def image_view(request):
